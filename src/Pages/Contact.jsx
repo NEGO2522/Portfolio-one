@@ -77,12 +77,6 @@ export default function Contact() {
 
   const contactInfo = [
     { 
-      icon: <FiMail className="w-5 h-5" />, 
-      title: 'Email Me',
-      text: 'negokshitij@gmail.com',
-      href: 'mailto:negokshitij@gmail.com?subject=Portfolio%20Inquiry',
-    },
-    { 
       icon: <FiLinkedin className="w-5 h-5" />, 
       title: 'LinkedIn',
       text: 'Connect with me',
@@ -94,13 +88,6 @@ export default function Contact() {
       text: 'View my projects',
       href: 'https://github.com/NEGO2522',
       // color: 'from-gray-700 to-gray-800'
-    },
-    { 
-      icon: <FiMapPin className="w-5 h-5" />, 
-      title: 'Location',
-      text: 'Jaipur, India',
-      // color: 'from-green-500 to-green-600',
-      noHover: true
     }
   ];
 
