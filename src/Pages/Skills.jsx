@@ -2,50 +2,48 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
-    title: 'Frontend Development',
+    title: 'Development Stack',
     skills: [
-      { name: 'HTML', level: 90 },
-      { name: 'CSS/SCSS', level: 85 },
+      { name: 'Python', level: 85 },
+      { name: 'C', level: 80 },
+      { name: 'SQL', level: 80 },
       { name: 'JavaScript', level: 80 },
-      { name: 'React', level: 85 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'Redux', level: 75 },
+      { name: 'HTML/CSS', level: 90 },
+      { name: 'DSA', level: 85 },
     ],
     icon: '💻'
   },
   {
-    title: 'Backend Development',
+    title: 'Data Science & Analysis',
     skills: [
-      { name: 'Node.js', level: 80 },
-      { name: 'Express.js', level: 75 },
-      { name: 'MongoDB', level: 70 },
-      { name: 'Firebase', level: 75 },
-      { name: 'RESTful APIs', level: 80 },
-      { name: 'Python', level: 70 },
+      { name: 'Pandas', level: 85 },
+      { name: 'NumPy', level: 80 },
+      { name: 'Matplotlib', level: 80 },
+      { name: 'Seaborn', level: 75 },
+      { name: 'Machine Learning', level: 75 },
+      { name: 'OpenCV', level: 75 },
     ],
-    icon: '🔧'
+    icon: '📊'
   },
   {
-    title: 'Tools & Platforms',
+    title: 'Web Development',
     skills: [
-      { name: 'Git & GitHub', level: 85 },
-      { name: 'Vite', level: 80 },
-      { name: 'VS Code', level: 90 },
-      { name: 'Figma', level: 75 },
-      { name: 'Netlify', level: 80 },
-      { name: 'Vercel', level: 85 },
+      { name: 'React.js', level: 85 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'Firebase', level: 80 },
+      { name: 'BeautifulSoup', level: 80 },
+      { name: 'Responsive Design', level: 85 },
     ],
-    icon: '🛠️'
+    icon: '🌐'
   },
   {
     title: 'Soft Skills',
     skills: [
+      { name: 'Fluent English', level: 90 },
       { name: 'Problem Solving', level: 90 },
-      { name: 'Teamwork', level: 95 },
-      { name: 'Creativity', level: 85 },
-      { name: 'Adaptability', level: 90 },
-      { name: 'Communication', level: 85 },
-      { name: 'Time Management', level: 80 },
+      { name: 'Teamwork', level: 85 },
+      { name: 'Communication', level: 90 },
+      { name: 'Adaptability', level: 85 },
     ],
     icon: '🌟'
   },
@@ -152,7 +150,7 @@ export default function Skills() {
         >
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Additional Skills</h3>
           <div className="flex flex-wrap gap-3">
-            {['Responsive Design', 'UI/UX Principles', 'Agile Methodologies', 'Debugging', 'Code Review', 'Technical Documentation', 'API Integration', 'Version Control'].map((skill, idx) => (
+            {['AI Tools (ChatGPT, Midjourney)', 'Web Scraping', 'Data Analysis', 'Technical Writing', 'Project Management', 'Critical Thinking', 'Collaboration', 'Continuous Learning'].map((skill, idx) => (
               <motion.span
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}

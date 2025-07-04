@@ -4,28 +4,27 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 // Project data
 const projects = [
   {
-    title: 'Healthcare Platform',
-    description: 'A smart platform connecting patients to doctors, with features like AI symptom checker, emergency ambulance, and online prescriptions.',
-    tech: ['React', 'Tailwind', 'Firebase', 'Node.js'],
-    github: '#',
-    demo: '#',
-    image: '/healthcare-platform.jpg'
+    title: 'CentralizedAI',
+    description: 'CentralizedAI is an all-in-one platform that brings multiple AI tools together in one place. It simplifies access to AI for learning, productivity, and real-world problem-solving.',
+    tech: ['ReactJs', 'Tailwind CSS', 'Firebase','AI Tools'],
+    github: 'https://github.com/NEGO2522/CentralizedAI',
+    demo: 'https://centralized-ai.vercel.app/',
+    image: 'https://img.freepik.com/free-photo/artificial-intelligence-technology-science-background_53876-124643.jpg'
   },
   {
-    title: 'EduCommute',
-    description: 'Real-time tracking system for school/college buses with safety, transparency, and efficiency in mind.',
-    tech: ['React', 'Node.js', 'MongoDB', 'WebSockets'],
-    github: '#',
-    demo: '#',
-    image: '/edutrack.jpg'
+    title: 'College Mess App',
+    description: 'A responsive web application using React.js and Tailwind CSS to manage daily menus and meal schedules for a college mess. The app focuses on clean UI/UX and provides dynamic updates to students.',
+    tech: ['React.js', 'Tailwind CSS', 'Responsive Design', 'UI/UX'],
+    github: 'https://github.com/NEGO2522/Poornima-mess',
+    demo: 'https://poornima-mess.vercel.app/',
+    image: 'https://img.freepik.com/free-vector/restaurant-menu-background-with-photo_52683-47043.jpg'
   },
   {
-    title: 'NextGenOva',
-    description: 'A platform helping students discover career paths, join communities, and access field-specific roadmaps.',
-    tech: ['React', 'Vite', 'Tailwind', 'Firebase'],
-    github: '#',
-    demo: '#',
-    image: '/nextgenova.jpg'
+    title: 'Diwali Sales Data Analysis',
+    description: 'Conducted exploratory data analysis on Diwali sales data using NumPy, Pandas, Matplotlib, and Seaborn. Extracted insights related to consumer behavior, peak sales categories, and regional performance.',
+    tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/NEGO2522/Diwali-Sales-Project',
+    image: 'https://img.freepik.com/free-vector/business-analytics-concept-illustration_114360-1500.jpg'
   },
 ];
 
@@ -98,10 +97,13 @@ export default function Projects() {
               whileHover={{ y: -5 }}
               className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:opacity-0 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-white text-4xl font-bold">{project.title.charAt(0)}</div>
-                </div>
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+
               </div>
               
               <div className="p-6 flex-1 flex flex-col">
@@ -129,15 +131,17 @@ export default function Projects() {
                   >
                     <FiGithub className="w-5 h-5" />
                   </a>
-                  <a
-                    href={project.demo}
-                    className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Demo
-                    <FiExternalLink className="ml-1 w-4 h-4" />
-                  </a>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                      <FiExternalLink className="ml-1 w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -149,14 +153,13 @@ export default function Projects() {
           className="text-center mt-16"
         >
           <p className="text-gray-600 dark:text-gray-300 mb-6">Want to see more of my work?</p>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+          <button
+            onClick={() => window.open('https://github.com/NEGO2522', '_blank')}
+            className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors cursor-pointer border-0"
+            style={{ display: 'inline-block' }}
           >
             View All Projects on GitHub
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
