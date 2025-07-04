@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiMail, FiLinkedin, FiGithub, FiSend, FiCheckCircle, FiMapPin, FiPhone } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 
 const container = {
   hidden: { opacity: 0 },
@@ -42,20 +43,36 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      // Using EmailJS with environment variables
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        {
+          to_email: process.env.REACT_APP_EMAILJS_TARGET_EMAIL,
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          reply_to: formData.email
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+      
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
       
-      // Reset submission status after 3 seconds
-      setTimeout(() => setIsSubmitted(false), 3000);
-    }, 1500);
+      // Reset submission status after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setIsSubmitting(false);
+      alert('Failed to send message. Please try again later.');
+    }
   };
 
   const contactInfo = [

@@ -122,10 +122,10 @@ export default function About() {
 
               <blockquote className="relative p-6 bg-white/50 dark:bg-gray-800/50 rounded-xl border-l-4 border-blue-500 italic mt-8">
                 <p className="text-gray-700 dark:text-gray-300">
-                  "Success is not final; failure is not fatal: It is the courage to continue that counts."
+                  "When you stop fitting in, you start standing out — that’s where invention begins."
                 </p>
                 <footer className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  — Winston Churchill
+                  — Chat Gpt
                 </footer>
               </blockquote>
             </motion.div>

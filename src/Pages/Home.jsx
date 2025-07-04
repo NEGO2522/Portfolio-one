@@ -58,7 +58,7 @@ export default function Home() {
               variants={item}
               className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              I craft exceptional digital experiences through thoughtful design and clean, efficient code. Let's build something amazing together.
+             I’m a frontend web developer and data science enthusiast, passionate about building useful and interactive tech solutions.
             </motion.p>
 
             <motion.div 
@@ -96,7 +96,7 @@ export default function Home() {
                 <motion.a 
                   whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/kshitij-jain-8a4b3726b/" 
+                  href="https://www.linkedin.com/in/kshitij-jain-422025342/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer"
@@ -112,7 +112,7 @@ export default function Home() {
                 <motion.a 
                   whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://github.com/kshitijjain-1" 
+                  href="https://github.com/NEGO2522" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 text-white shadow-lg hover:shadow-xl hover:shadow-gray-800/20 transition-all duration-300 cursor-pointer"
