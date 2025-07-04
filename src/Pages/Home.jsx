@@ -76,7 +76,7 @@ export default function Home() {
               </a>
               
               <a
-                href="/src/Data/Kshitij Jain - Resume.pdf"
+                href="/data/Kshitij_Jain_Resume.pdf"
                 download="Kshitij_Jain_Resume.pdf"
                 className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
               >
