@@ -66,7 +66,7 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <a
-                href="/Contact"
+                href="/contact"
                 className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-all duration-300 ease-out hover:ring-2 hover:ring-blue-600 hover:ring-offset-2"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 to-blue-700"></span>
