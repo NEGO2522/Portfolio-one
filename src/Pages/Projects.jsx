@@ -50,6 +50,7 @@ const item = {
   },
 };
 
+// TEST: This is a test comment to verify file updates
 export default function Projects() {
   return (
     <section className="min-h-screen pt-20 pb-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
@@ -148,19 +149,7 @@ export default function Projects() {
           ))}
         </div>
         
-        <motion.div 
-          variants={item}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-600 dark:text-gray-300 mb-6">Want to see more of my work?</p>
-          <button
-            onClick={() => window.open('https://github.com/NEGO2522', '_blank')}
-            className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors cursor-pointer border-0"
-            style={{ display: 'inline-block' }}
-          >
-            View All Projects on GitHub
-          </button>
-        </motion.div>
+
       </div>
     </section>
   );
