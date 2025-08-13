@@ -4,11 +4,11 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 // Project data
 const projects = [
   {
-    title: 'CentralizedAI',
-    description: 'CentralizedAI is an all-in-one platform that brings multiple AI tools together in one place. It simplifies access to AI for learning, productivity, and real-world problem-solving.',
+    title: 'LATTHI',
+    description: 'LATTHI, a fully functional E-Commerce Website built to give users a seamless and modern shopping experience.',
     tech: ['ReactJs', 'Tailwind CSS', 'Firebase','AI Tools'],
     github: 'https://github.com/NEGO2522/CentralizedAI',
-    demo: 'https://centralized-ai.vercel.app/',
+    demo: 'https://project-latthi.vercel.app/',
     image: 'https://img.freepik.com/free-photo/artificial-intelligence-technology-science-background_53876-124643.jpg'
   },
   {
@@ -96,7 +96,7 @@ export default function Projects() {
               key={index}
               variants={item}
               whileHover={{ y: -5 }}
-              className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col cursor-default"
             >
               <div className="h-48 relative overflow-hidden">
                 <img 
@@ -115,7 +115,7 @@ export default function Projects() {
                   {project.tech.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                      className="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 cursor-default"
                     >
                       {tech}
                     </span>
@@ -125,7 +125,7 @@ export default function Projects() {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                   <a
                     href={project.github}
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Repository"
@@ -135,7 +135,7 @@ export default function Projects() {
                   {project.demo && (
                     <a
                       href={project.demo}
-                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -149,6 +149,9 @@ export default function Projects() {
           ))}
         </div>
         
+        <div className="text-center mt-12">
+          <p className="text-gray-400 text-lg">And many more projects to come...</p>
+        </div>
 
       </div>
     </section>
