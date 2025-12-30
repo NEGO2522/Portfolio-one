@@ -132,7 +132,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Leveraging AI for design impact. 10+ years of experience across UAE & India.
+              Exploring AI, web development, and data-driven solutions.
             </motion.p>
             
             <motion.div 
