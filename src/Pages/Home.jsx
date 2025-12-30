@@ -1,173 +1,698 @@
-import { motion } from 'framer-motion';
-import { FiArrowRight, FiDownload, FiGithub, FiLinkedin } from 'react-icons/fi';
-import profileImage from '../assets/img.png';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiMapPin, FiMessageCircle, FiX, FiAward, FiCode, FiGlobe, FiExternalLink } from 'react-icons/fi';
+import profileImage from '../assets/img.jpg';
+import Testimonials from './Testimonials';
 
-export default function Home() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
+function AnimatedLogo() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 w-full">
+    <motion.div
+      className="absolute top-6 left-6 z-10"
+      initial={{ scale: 0, rotate: -180 }}
+      animate={{ 
+        scale: 1, 
+        rotate: 0,
+        transition: { 
+          type: 'spring', 
+          stiffness: 100, 
+          damping: 10 
+        } 
+      }}
+      whileHover={{
+        scale: 1.1,
+        rotate: 5,
+        transition: { duration: 0.3 }
+      }}
+    >
+      <div className="relative w-12 h-12">
+        {/* Simple animated dot */}
         <motion.div 
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col lg:flex-row items-center justify-between gap-12 py-20 md:py-28 lg:py-36"
+          className="absolute inset-0 rounded-full"
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'linear'
+          }}
         >
-          {/* Content */}
           <motion.div 
-            variants={item}
-            className="lg:w-1/2 text-center lg:text-left"
-          >
-            <motion.span 
-              variants={item}
-              className="inline-block mb-4 text-sm md:text-base font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full"
-            >
-              Data Scientist & Web Developer
-            </motion.span>
-            
-            <motion.h1 
-              variants={item}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
-            >
-              Hi, I'm <span className="text-blue-600 dark:text-blue-400">Kshitij Jain</span>
-            </motion.h1>
-            
-            <motion.p 
-              variants={item}
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
-            >
-             I’m a frontend web developer and data science enthusiast, passionate about building useful and interactive tech solutions.
-            </motion.p>
-
-            <motion.div 
-              variants={item}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <a
-                href="/contact"
-                className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-all duration-300 ease-out hover:ring-2 hover:ring-blue-600 hover:ring-offset-2"
-              >
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 to-blue-700"></span>
-                <span className="relative flex items-center gap-2">
-                  Get in Touch <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </a>
-              
-              <a
-                href="/data/Kshitij_Jain_Resume.pdf"
-                download="Kshitij_Jain_Resume.pdf"
-                className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-              >
-                <span className="flex items-center gap-2">
-                  <FiDownload className="group-hover:animate-bounce" /> Download CV
-                </span>
-              </a>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div 
-              variants={item}
-              className="flex flex-col gap-4 mt-10"
-            >
-              <p className="text-gray-600 dark:text-gray-300 text-lg font-medium text-center lg:text-left">Connect with me</p>
-              <div className="flex justify-center lg:justify-start gap-6">
-                <motion.a 
-                  whileHover={{ y: -2, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/kshitij-jain-422025342/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer"
-                  aria-label="LinkedIn Profile"
-                  title="Connect on LinkedIn"
-                >
-                  <FiLinkedin className="w-6 h-6" />
-                  <span className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    LinkedIn Profile
-                  </span>
-                </motion.a>
-                
-                <motion.a 
-                  whileHover={{ y: -2, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://github.com/NEGO2522" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 text-white shadow-lg hover:shadow-xl hover:shadow-gray-800/20 transition-all duration-300 cursor-pointer"
-                  aria-label="GitHub Profile"
-                  title="View GitHub Profile"
-                >
-                  <FiGithub className="w-6 h-6" />
-                  <span className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    GitHub Profile
-                  </span>
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* 3D Profile Image */}
-          <motion.div 
-            variants={item}
-            className="relative w-full max-w-md lg:w-1/2 mt-12 lg:mt-0 perspective-1000"
-            initial={{ rotateY: 0 }}
-            whileHover={{
-              rotateY: 5,
-              rotateX: 5,
-              scale: 1.05,
-              transition: { duration: 0.5 }
+            className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#F2F2F2] rounded-full"
+            animate={{
+              rotate: -360,
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: 'linear'
+            }}
+          />
+        </motion.div>
+        
+        {/* KJ Text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.span 
+            className="text-xl font-bold text-[#F2F2F2]"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 1,
+              transition: { delay: 0.5 }
             }}
           >
-            <div className="relative z-10 w-full max-w-md mx-auto">
-              {/* Subtle background glow */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/30 to-purple-600/30 rounded-3xl opacity-0 group-hover:opacity-100 blur-3xl transition-all duration-700"></div>
-              
-              {/* 3D Container */}
-              <motion.div 
-                className="relative z-10 w-full h-full transform-style-preserve-3d transition-all duration-700 ease-out"
-                whileHover={{
-                  rotateY: -5,
-                  rotateX: 5,
-                  transition: { duration: 0.5 }
-                }}
+            KJ
+          </motion.span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  return (
+    <div className="min-h-screen bg-black text-white pb-24">
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+        {/* Vertical Lines Background */}
+        <div className="absolute inset-0 flex justify-between w-full max-w-7xl mx-auto px-4 pointer-events-none">
+          {[...Array(5)].map((_, i) => (
+            <div 
+              key={i}
+              className="w-0.5 h-full bg-gradient-to-b from-transparent via-gray-400/50 to-transparent"
+              style={{
+                left: `${(i + 0.5) * 20}%`,
+                position: 'absolute',
+                transform: 'translateX(-50%)',
+                boxShadow: '0 0 10px 1px rgba(255,255,255,0.1)'
+              }}
+            />
+          ))}
+        </div>
+        <AnimatedLogo />
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between w-full px-4 relative z-10">
+          <div className="max-w-2xl text-center md:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y 2"
+            >
+              <div className="flex justify-center md:justify-start mb-6">
+                <motion.div 
+                  className="flex items-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <span className="inline-flex items-center border border-gray-600 rounded-full px-4 py-2 text-gray-400 hover:text-white hover:border-white transition-colors duration-300">
+                    <FiMapPin className="mr-2" />
+                    Jaipur, Rajasthan, India
+                  </span>
+                </motion.div>
+              </div>
+              <div className="relative">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center md:text-left text-gray-700/30">
+                  Hi, I'm <span className="text-[#F2F2F2]">Kshitij Jain</span>
+                </h1>
+                <div className="absolute -bottom-2 left-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
+              </div>
+            
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              Designing and building digital products that balance user needs and real-world problems.
+            </motion.p>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+             Exploring AI-powered solutions and modern web technologies.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row justify-center gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <a
+                href="/data/Kshitij Jain- Resume.pdf"
+                download="Kshitij_Jain_Resume.pdf"
+                className="px-8 py-4 bg-[#F2F2F2] text-gray-900 font-medium rounded-full hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
               >
+                <span>Download Resume</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </a>
+              
+              <a
+                href="#contact"
+                className="px-8 py-4 border-2 border-[#F2F2F2] text-[#F2F2F2] font-medium rounded-full hover:bg-[#F2F2F2] hover:text-gray-900 transition-all duration-300"
+              >
+                Let's Chat
+              </a>
+            </motion.div>
+            </motion.div>
+          </div>
+          
+          {/* Profile Image with Decorative Cards */}
+          <motion.div 
+            className="mt-12 md:mt-0 md:ml-12 relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ 
+              opacity: 1, 
+              x: 0,
+              scale: [1, 1.02, 1],
+              y: [0, -10, 0],
+              transition: { 
+                opacity: { duration: 0.8, delay: 0.3 },
+                x: { duration: 0.8, delay: 0.3 },
+                scale: { 
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  repeatType: 'reverse'
+                },
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  repeatType: 'reverse'
+                }
+              }
+            }}
+          >
+            {/* Card 1 - Top Left - Experience */}
+            <motion.div 
+              className="absolute -top-4 -left-8 w-44 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
+              initial={{ opacity: 0, x: -30, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div className="text-xs text-gray-400">Experience</div>
+              <div className="text-white font-medium text-sm">1+ Year in Web Dev</div>
+            </motion.div>
+
+            {/* Card 2 - Top Right - Status */}
+            <motion.div 
+              className="absolute -top-4 -right-8 w-48 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
+              initial={{ opacity: 0, x: 30, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <div className="text-xs text-gray-400">Status</div>
+              <div className="text-white font-medium text-sm">Open to Opportunities</div>
+            </motion.div>
+
+            {/* Card 3 - Bottom Center - Roles */}
+            <motion.div 
+              className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-56 h-14 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10 flex items-center justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
+              <span className="text-white font-medium text-sm text-center">
+                Web Developer & Data Scientist
+              </span>
+            </motion.div>
+
+            {/* Centered Rotating Border */}
+            <motion.div 
+              className="absolute -z-10 w-full h-full flex items-center justify-center"
+              style={{
+                transformOrigin: 'center center',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <motion.div 
+                className="border-2 border-[#F2F2F2]/50 rounded-lg"
+                style={{
+                  position: 'absolute',
+                  width: '22rem',
+                  height: '22rem',
+                  background: 'transparent',
+                  boxShadow: '0 0 15px rgba(242, 242, 242, 0.2)',
+                }}
+                initial={{
+                  rotate: 0,
+                  opacity: 0.7,
+                }}
+                animate={{
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              />
+            </motion.div>
+            
+            {/* Profile Image */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#F2F2F2]/20 z-0">
+              <img 
+                src={profileImage} 
+                alt="Kshitij Jain" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
+      
+      {/* Projects Section */}
+      <Projects />
+      
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
+      
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Section Header */}
+          <motion.div 
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          ></motion.div>
+
+          {/* Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Image */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8 }
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <div className="relative z-10">
                 <img 
                   src={profileImage} 
                   alt="Kshitij Jain" 
-                  className="w-full h-auto object-cover rounded-2xl transform transition-transform duration-700 group-hover:scale-105 shadow-2xl"
+                  className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
                 />
+              </div>
+            </motion.div>
+
+            {/* Right Column - Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8, delay: 0.2 }
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <h2 className="text-3xl font-bold mb-6">
+                I'm <span className="text-[#F2F2F2]">Kshitij Jain</span>
+              </h2>
+              
+              <div className="space-y-6 text-gray-300 mb-8">
+                <p>
+                  A 2nd-year B.Tech student in Computer Science (AI & ML) at Poornima University, 
+                  passionate about creating tech solutions that help people and solve real-life problems.
+                </p>
                 
-                {/* Subtle reflection effect */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 bg-gradient-to-t from-white to-transparent mix-blend-overlay transition-opacity duration-700 pointer-events-none"></div>
-              </motion.div>
+                <p>
+                  My interests lie in web development, AI, and entrepreneurship. I'm currently working on innovative projects 
+                  like a EdTech platform and focusing on making AI models.
+                </p>
+                
+                <p>
+                  In my free time, I enjoy playing football and volleyball, reading books, and watching inspiring movies. 
+                  I'm constantly striving to improve and contribute to meaningful change through technology.
+                </p>
+              </div>
+
+              {/* Stats/Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+                    <FiAward className="w-6 h-6 text-[#F2F2F2]" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">1+ Years</h3>
+                  <p className="text-gray-400">Experience in Web Development</p>
+                </div>
+                
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+                    <FiCode className="w-6 h-6 text-[#F2F2F2]" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">5+ Projects</h3>
+                  <p className="text-gray-400">Completed Successfully</p>
+                </div>
+                
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+                    <FiGlobe className="w-6 h-6 text-[#F2F2F2]" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">Always</h3>
+                  <p className="text-gray-400">Learning & Growing</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
+      
+      {/* Testimonials Section */}
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
+      
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 md:px-12 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            {/* Left Side - Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="md:col-span-7 space-y-8"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-700/30">
+                Let's have a Chat
+              </h2>
+              <p className="text-xl text-gray-300">
+                Want to talk tech, ideas, or building something useful? Let’s connect. <br /> Hit me up!
+              </p>
+              <a
+                href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 border-2 border-[#F2F2F2] text-[#F2F2F2] font-medium rounded-full hover:bg-[#F2F2F2] hover:text-gray-900 transition-all duration-300"
+              >
+                Let's Chat
+              </a>
+            </motion.div>
+
+            {/* Right Side - Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="md:col-span-5 space-y-8 md:pl-12"
+            >
+              <h3 className="text-2xl font-semibold text-[#F2F2F2]">Get in Touch</h3>
+              
+              <div className="space-y-4">
+                <a 
+                  href="mailto:nextgenova28@gmail.com" 
+                  className="flex items-center gap-3 text-gray-300 hover:text-[#F2F2F2] transition-colors"
+                >
+                  <FiMail className="w-5 h-5" />
+                  <span>nextgenova28@gmail.com</span>
+                </a>
+                
+                <a 
+                  href="tel:+919413973399" 
+                  className="flex items-center gap-3 text-gray-300 hover:text-[#F2F2F2] transition-colors"
+                >
+                  <FiPhone className="w-5 h-5" />
+                  <span>+91 94139 73399</span>
+                </a>
+              </div>
+
+              <div className="pt-4">
+                <h4 className="text-lg font-medium text-[#F2F2F2] mb-4">Follow Me</h4>
+                <div className="flex gap-4">
+                  <a 
+                    href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-300 hover:text-[#F2F2F2] hover:border-[#F2F2F2] transition-all"
+                  >
+                    <FiLinkedin className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="mailto:nextgenova28@gmail.com"
+                    className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-300 hover:text-[#F2F2F2] hover:border-[#F2F2F2] transition-all"
+                  >
+                    <FiMail className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://github.com/NEGO2522" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-300 hover:text-[#F2F2F2] hover:border-[#F2F2F2] transition-all"
+                  >
+                    <FiGithub className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Footer - Removed as per request */}
+        </div>
+      </section>
+
+
+      {/* Chat Widget */}
+      <AnimatePresence>
+        {!isChatOpen ? (
+          <motion.div 
+            className="fixed bottom-8 right-8 z-50"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.5 }
+            }}
+            whileHover={{ 
+              scale: 1.1,
+              transition: { duration: 0.2 }
+            }}
+          >
+            <button 
+              className="w-14 h-14 rounded-full bg-[#F2F2F2] text-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
+              onClick={() => setIsChatOpen(true)}
+              aria-label="Open chat"
+            >
+              <FiMessageCircle className="w-6 h-6" />
+            </button>
+          </motion.div>
+        ) : (
+          <motion.div 
+            className="fixed bottom-8 right-8 z-50 w-100 bg-[#1a1a1a] rounded-xl shadow-2xl overflow-hidden border border-gray-800"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          >
+            {/* Chat Header */}
+            <div className="bg-[#1a1a1a] p-4 border-b border-gray-800 flex justify-between items-start">
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white mr-3">
+                  KJ
+                </div>
+                <div>
+                  <h4 className="text-white font-medium">Kshitij Jain</h4>
+                  <p className="text-sm text-gray-400">Product Designer</p>
+                </div>
+              </div>
+              <motion.button 
+                onClick={() => setIsChatOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Close chat"
+                whileHover={{ rotate: 90, scale: 1.1 }}
+                whileTap={{ rotate: 180, scale: 0.9 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+              >
+                <FiX className="w-5 h-5" />
+              </motion.button>
             </div>
             
-            {/* Decorative Elements */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            {/* Chat Body */}
+            <div className="p-4">
+              
+              <div className="bg-[#222] p-4 rounded-lg mb-4">
+                <p className="text-gray-200">Hey there! 👋</p>
+                <p className="text-gray-200 mt-1">Want to chat about design, products, or anything digital?</p>
+                <p className="text-gray-400 text-sm mt-2">Click below to message me on LinkedIn!</p>
+              </div>
+              
+              <a 
+                href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#0a5aad] text-white py-3 px-4 rounded-lg font-medium transition-colors"
+              >
+                <FiLinkedin className="w-5 h-5" />
+                <span>Message on LinkedIn</span>
+              </a>
+            </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// Project data
+const projects = [
+  {
+    title: 'LATTHI',
+    description: 'A fully functional E-Commerce Website built to give users a seamless and modern shopping experience with AI-powered features.',
+    tech: ['ReactJs', 'Tailwind CSS', 'Firebase', 'AI Tools'],
+    github: 'https://github.com/NEGO2522/CentralizedAI',
+    demo: 'https://project-latthi.vercel.app/',
+    image: 'https://img.freepik.com/free-photo/artificial-intelligence-technology-science-background_53876-124643.jpg'
+  },
+  {
+    title: 'College Mess App',
+    description: 'A responsive web application to manage daily menus and meal schedules for college students with clean UI/UX and real-time updates.',
+    tech: ['React.js', 'Tailwind CSS', 'Responsive Design', 'UI/UX'],
+    github: 'https://github.com/NEGO2522/Poornima-mess',
+    demo: 'https://poornima-mess.vercel.app/',
+    image: 'https://img.freepik.com/free-vector/restaurant-menu-background-with-photo_52683-47043.jpg'
+  },
+  {
+    title: 'Diwali Sales Analysis',
+    description: 'Comprehensive data analysis of Diwali sales patterns using Python data science stack, revealing key consumer insights and trends.',
+    tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/NEGO2522/Diwali-Sales-Project',
+    image: 'https://img.freepik.com/free-vector/business-analytics-concept-illustration_114360-1500.jpg'
+  },
+  {
+    title: 'SIH 25',
+    description: 'Smart India Hackathon 2025 project focusing on innovative solutions for real-world problems using cutting-edge technology.',
+    tech: ['React', 'Node.js', 'MongoDB', 'AI/ML'],
+    github: 'https://github.com/NEGO2522/SIH-25',
+    demo: 'https://sih-25-poornima.vercel.app',
+    image: 'https://img.freepik.com/free-vector/hackathon-background-with-hud-elements_23-2149067448.jpg'
+  },
+  {
+    title: 'NEGO Services',
+    description: 'A comprehensive service platform offering various digital solutions and professional services to clients worldwide.',
+    tech: ['Next.js', 'Tailwind CSS', 'Firebase', 'Stripe'],
+    github: 'https://github.com/NEGO2522/nego-services',
+    demo: 'https://nego-services.vercel.app',
+    image: 'https://img.freepik.com/free-vector/digital-services-online-platform-abstract-concept-illustration_335657-2041.jpg'
+  },
+  {
+    title: 'STED (Student Education)',
+    description: 'An educational platform designed to enhance student learning experiences with interactive content and progress tracking.',
+    tech: ['MERN Stack', 'JWT Auth', 'Redux', 'Material-UI'],
+    github: 'https://github.com/NEGO2522/STED',
+    demo: 'https://sted-founder.vercel.app',
+    image: 'https://img.freepik.com/free-vector/online-education-concept-illustration_114360-5481.jpg'
+  }
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const item = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.98
+  },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 15
+    }
+  },
+  hover: {
+    y: -5,
+    transition: { duration: 0.2 }
+  }
+};
+
+export function Projects() {
+  return (
+    <section id="work" className="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-6xl md:text-7xl font-serif font-extrabold italic tracking-tight text-gray-700/30 mb-12">WORK</h1>
+        </motion.div>
+
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          {projects.map((project, index) => (
+            <motion.div 
+              key={index}
+              className={`py-6 ${index < projects.length - 1 ? 'border-b border-gray-800' : ''} cursor-pointer`}
+              variants={item}
+              whileHover="hover"
+              onClick={() => window.open(project.demo || project.github, '_blank')}
+            >
+              <div className="flex items-start">
+                <span className="text-2xl font-mono text-gray-500 w-12 flex-shrink-0">0{index + 1}</span>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white">{project.title}</h2>
+                    <div className="flex space-x-2">
+                      <a 
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors transform hover:scale-110"
+                        title="View on GitHub"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FiGithub className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-lg text-gray-400 mt-2">{project.tech.join(' • ')}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
