@@ -111,7 +111,7 @@ export default function Home() {
                 </motion.div>
               </div>
               <div className="relative">
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center md:text-left text-gray-700/30">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center md:text-left">
                   Hi, I'm <span className="text-[#F2F2F2]">Kshitij Jain</span>
                 </h1>
                 <div className="absolute -bottom-2 left-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
@@ -132,7 +132,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-             Exploring AI-powered solutions and modern web technologies.
+              Leveraging AI for design impact. 10+ years of experience across UAE & India.
             </motion.p>
             
             <motion.div 
