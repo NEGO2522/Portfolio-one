@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white pb-12 md:pb-24 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden pt-40 sm:pt-0">
+      <section className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden pt-4 sm:pt-0">
         {/* Vertical Lines Background */}
         <div className="absolute inset-0 flex justify-between w-full max-w-7xl mx-auto px-4 pointer-events-none">
           {[...Array(5)].map((_, i) => (
