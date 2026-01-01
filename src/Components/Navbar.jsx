@@ -76,14 +76,14 @@ export default function Navbar() {
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-      className="fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center pb-4 w-full"
+      className="fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 w-full"
     >
       <div className={`relative transition-all duration-300 ${
         isScrolled 
-          ? 'bg-black/30 backdrop-blur-md shadow-lg py-3 px-6 rounded-t-2xl border-t border-x border-[#B6B09F]/20'
-          : 'bg-black/20 backdrop-blur-sm py-4 px-8 rounded-t-2xl border-t border-x border-[#B6B09F]/10'
-      } w-full max-w-7xl mx-4`}>
-        <div className="flex justify-between items-center h-16 max-w-6xl mx-auto">
+          ? 'bg-black/30 backdrop-blur-md shadow-lg py-2 sm:py-3 px-4 sm:px-6 rounded-t-2xl border-t border-x border-[#B6B09F]/20'
+          : 'bg-black/20 backdrop-blur-sm py-3 sm:py-4 px-4 sm:px-8 rounded-t-2xl border-t border-x border-[#B6B09F]/10'
+      } w-full max-w-7xl mx-auto`}>
+        <div className="flex justify-between items-center h-14 sm:h-16 max-w-6xl mx-auto">
           {/* Home Button */}
           <motion.div 
             className="hidden md:flex items-center"
@@ -92,18 +92,19 @@ export default function Navbar() {
           >
             <Link 
               to="/" 
-              className={`px-4 py-1.5 rounded-full bg-[#F2F2F2] text-gray-900 flex items-center gap-2 text-sm font-medium ${
+              className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#F2F2F2] text-gray-900 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium ${
                 location.pathname === '/' ? 'ring-2 ring-offset-2 ring-offset-black ring-[#B6B09F]' : ''
               }`}
               title="Home"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              <FiHome className="w-5 h-5" />
-              <span className="text-sm font-medium">Home</span>
+              <FiHome className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Home</span>
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center ml-12 space-x-2">
+          <div className="hidden md:flex items-center ml-6 sm:ml-12 space-x-1 sm:space-x-2">
             <motion.ul 
               className="flex items-center space-x-6"
               variants={menuVariants}
@@ -119,7 +120,7 @@ export default function Navbar() {
                   {link.path ? (
                     <Link
                       to={link.path}
-                      className={`px-4 py-2 text-sm font-medium transition-colors duration-200 flex flex-col items-center ${
+                      className={`px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors duration-200 flex flex-col items-center ${
                         location.pathname === link.path
                           ? 'text-white'
                           : 'text-gray-400 hover:text-white'
@@ -134,7 +135,7 @@ export default function Navbar() {
                   ) : (
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className={`px-4 py-2 text-sm font-medium transition-colors duration-200 flex flex-col items-center ${
+                      className={`px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors duration-200 flex flex-col items-center ${
                         location.hash === `#${link.id}`
                           ? 'text-white'
                           : 'text-gray-400 hover:text-white'
@@ -162,9 +163,9 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <FiX className="h-6 w-6" />
+                <FiX className="h-5 w-5 sm:h-6 sm:w-6" />
               ) : (
-                <FiMenu className="h-6 w-6" />
+                <FiMenu className="h-5 w-5 sm:h-6 sm:w-6" />
               )}
             </motion.button>
           </div>
@@ -179,7 +180,8 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/95 backdrop-blur-md overflow-hidden border-t border-gray-800"
+            className="md:hidden bg-black/95 backdrop-blur-md overflow-hidden border-t border-gray-800 w-full"
+            style={{ boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3)' }}
           >
             <motion.ul 
               className="px-2 pt-2 pb-3 space-y-1"
@@ -191,13 +193,14 @@ export default function Navbar() {
                 <motion.li key={link.id} variants={itemVariants}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium ${
+                    className={`w-full text-left flex items-center gap-3 px-4 py-3.5 rounded-md text-sm sm:text-base font-medium transition-colors duration-200 ${
                       location.hash === `#${link.id}`
                         ? 'bg-[#F2F2F2] text-gray-900'
-                        : 'text-gray-300 hover:bg-gray-800/50 hover:text-[#F2F2F2]'
+                        : 'text-gray-300 active:bg-gray-800/70 hover:bg-gray-800/50 hover:text-[#F2F2F2]'
                     }`}
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <span className="text-lg">
+                    <span className="text-base sm:text-lg">
                       {link.icon}
                     </span>
                     <span>{link.name}</span>

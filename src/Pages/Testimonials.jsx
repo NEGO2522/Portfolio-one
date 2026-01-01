@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Testimonials = () => {
   const achievements = [
@@ -38,56 +39,49 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-2rem)] bg-black text-white pt-4 pr-4 pb-8 sm:pt-6 sm:pr-6 lg:pt-8 lg:pr-8">
-      <div className="max-w-5xl mx-auto pt-12">
-        <div className="flex justify-end -mr-8 sm:-mr-12 lg:-mr-16 mb-12">
-          <span className="text-6xl font-bold text-gray-700/30 tracking-widest">TESTIMONIALS & ACHIEVEMENTS</span>
-        </div>
-        
-        <div className="relative
-          before:absolute
-          before:left-1/2
-          before:top-0
-          before:h-full
-          before:w-1
-          before:-translate-x-1/2
-          before:bg-gradient-to-b
-          before:from-blue-500
-          before:to-purple-600
-          before:rounded-full
-          before:content-['']
-          before:z-0">
+    <div className="bg-black text-white py-4 sm:py-6 px-2 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6">
+        {/* Section Header */}
+        <motion.div 
+          className="mb-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-extrabold italic tracking-tight text-gray-700/30 mb-4">
+            TESTIMONIALS
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-transparent mx-auto mt-4" style={{ background: 'linear-gradient(to right, #9ca3af, transparent)' }}></div>
+        </motion.div>
+
+        {/* Horizontal Timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
           
+          <div className="flex flex-nowrap gap-4 sm:gap-8 pb-16 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory -mx-2 sm:mx-auto sm:justify-center">
           {achievements.map((achievement, index) => (
-            <div 
-              key={index} 
-              className={`relative mb-16 ${index % 2 === 0 ? 'pr-16' : 'pl-16'}`}
+            <motion.div 
+              key={index}
+              className="relative flex-shrink-0 w-[calc(100vw-2rem)] sm:w-80 snap-center sm:snap-none mx-1 sm:mx-0"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Timeline dot */}
-              <div className={`absolute top-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 z-10
-                ${index % 2 === 0 ? 'right-[-3.5rem]' : 'left-[-3.5rem]'}`}>
-                <div className="absolute inset-1 bg-black rounded-full"></div>
+              <div className="absolute left-1/2 -top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-[#F2F2F2] to-gray-400 flex items-center justify-center z-10">
+                <div className="w-3 h-3 rounded-full bg-[#F2F2F2]"></div>
               </div>
               
-              {/* Card */}
-              <div className={`relative bg-black p-6 rounded-xl border border-gray-700 transform transition-all duration-300 hover:border-blue-500
-                ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                
-                {/* Date */}
-                <div className={`absolute top-4 text-sm font-medium text-blue-400 
-                  ${index % 2 === 0 ? 'left-4' : 'right-4'}`}>
-                  {achievement.date}
-                </div>
-                
-                {/* Content */}
-                <div className="mt-6">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                    {achievement.title}
-                  </h2>
-                  <h3 className="text-lg font-semibold text-gray-200 mt-1">
-                    {achievement.subtitle}
-                  </h3>
-                  <p className="mt-2 text-gray-400">
+              {/* Content */}
+              <div className="w-full">
+                <div className="bg-gray-900/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-gray-800 hover:border-[#F2F2F2]/20 transition-all duration-300 h-full min-h-[260px] sm:min-h-[300px] flex flex-col">
+                  <div className="text-sm text-[#F2F2F2]/70 mb-3">{achievement.date}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{achievement.title}</h3>
+                  <h4 className="text-[#F2F2F2]/80 text-xs sm:text-sm font-medium mb-2 sm:mb-3">{achievement.subtitle}</h4>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 flex-grow">
                     {achievement.description}
                   </p>
                   
@@ -96,7 +90,7 @@ const Testimonials = () => {
                       href={achievement.link.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center mt-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white font-medium hover:opacity-90 transition-opacity"
+                      className="inline-flex items-center text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 bg-[#F2F2F2] text-gray-900 rounded-full hover:bg-opacity-90 transition-all duration-300 font-medium mt-auto self-start"
                     >
                       {achievement.link.text}
                       <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -106,8 +100,9 @@ const Testimonials = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
+          </div>
         </div>
       </div>
     </div>

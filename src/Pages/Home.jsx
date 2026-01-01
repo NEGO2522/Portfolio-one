@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiMapPin, FiMessageCircle, FiX, FiAward, FiCode, FiGlobe, FiExternalLink } from 'react-icons/fi';
 import profileImage from '../assets/img.jpg';
 import Testimonials from './Testimonials';
 
-function AnimatedLogo() {
+function AnimatedLogo({ isDesktop }) {
   return (
     <motion.div
       className="absolute top-6 left-6 z-10"
@@ -39,14 +39,14 @@ function AnimatedLogo() {
         >
           <motion.div 
             className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#F2F2F2] rounded-full"
-            animate={{
+            animate={isDesktop ? {
               rotate: -360,
-            }}
-            transition={{
+            } : {}}
+            transition={isDesktop ? {
               duration: 8,
               repeat: Infinity,
               ease: 'linear'
-            }}
+            } : {}}
           />
         </motion.div>
         
@@ -70,10 +70,21 @@ function AnimatedLogo() {
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-black text-white pb-12 md:pb-24 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden pt-40 sm:pt-0">
         {/* Vertical Lines Background */}
         <div className="absolute inset-0 flex justify-between w-full max-w-7xl mx-auto px-4 pointer-events-none">
           {[...Array(5)].map((_, i) => (
@@ -89,16 +100,16 @@ export default function Home() {
             />
           ))}
         </div>
-        <AnimatedLogo />
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between w-full px-4 relative z-10">
-          <div className="max-w-2xl text-center md:text-left">
+        <AnimatedLogo isDesktop={isDesktop} />
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between w-full px-2 sm:px-6 lg:px-8 relative z-10 mt-12 sm:mt-10 md:mt-0">
+          <div className="w-full max-w-2xl text-center md:text-left px-1 sm:px-0 mb-8 sm:mb-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="space-y 2"
             >
-              <div className="flex justify-center md:justify-start mb-6">
+              <div className="flex justify-center md:justify-start mb-4 sm:mb-6">
                 <motion.div 
                   className="flex items-center"
                   whileHover={{ scale: 1.05 }}
@@ -111,14 +122,14 @@ export default function Home() {
                 </motion.div>
               </div>
               <div className="relative">
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center md:text-left">
-                  Hi, I'm <span className="text-[#F2F2F2]">Kshitij Jain</span>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-center md:text-left text-white">
+                  Hi, I'm <span className="text-white">Kshitij Jain</span>
                 </h1>
-                <div className="absolute -bottom-2 left-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
+                <div className="hidden md:block absolute -bottom-2 left-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
               </div>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
+              className="text-base sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 leading-relaxed px-1 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -127,7 +138,7 @@ export default function Home() {
             </motion.p>
             
             <motion.p 
-              className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+              className="text-sm sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-12 max-w-2xl mx-auto px-1 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -136,7 +147,7 @@ export default function Home() {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-6"
+              className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 px-2 sm:px-0 mb-8 sm:mb-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -144,7 +155,7 @@ export default function Home() {
               <a
                 href="/data/Kshitij Jain- Resume.pdf"
                 download="Kshitij_Jain_Resume.pdf"
-                className="px-8 py-4 bg-[#F2F2F2] text-gray-900 font-medium rounded-full hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F2F2F2] text-gray-900 font-medium rounded-full hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <span>Download Resume</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,7 +165,7 @@ export default function Home() {
               
               <a
                 href="#contact"
-                className="px-8 py-4 border-2 border-[#F2F2F2] text-[#F2F2F2] font-medium rounded-full hover:bg-[#F2F2F2] hover:text-gray-900 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#F2F2F2] text-[#F2F2F2] font-medium rounded-full hover:bg-[#F2F2F2] hover:text-gray-900 transition-all duration-300 text-sm sm:text-base"
               >
                 Let's Chat
               </a>
@@ -164,13 +175,13 @@ export default function Home() {
           
           {/* Profile Image with Decorative Cards */}
           <motion.div 
-            className="mt-12 md:mt-0 md:ml-12 relative"
+            className="mt-4 sm:mt-16 md:mt-0 md:ml-12 relative w-full max-w-[280px] sm:max-w-xs mx-auto md:max-w-none md:mx-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ 
               opacity: 1, 
               x: 0,
               scale: [1, 1.02, 1],
-              y: [0, -10, 0],
+              y: [0, -5, 0],
               transition: { 
                 opacity: { duration: 0.8, delay: 0.3 },
                 x: { duration: 0.8, delay: 0.3 },
@@ -191,7 +202,7 @@ export default function Home() {
           >
             {/* Card 1 - Top Left - Experience */}
             <motion.div 
-              className="absolute -top-4 -left-8 w-44 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
+              className="hidden sm:block absolute -top-4 left-0 sm:-left-8 w-40 sm:w-44 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
               initial={{ opacity: 0, x: -30, y: -20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -202,7 +213,7 @@ export default function Home() {
 
             {/* Card 2 - Top Right - Status */}
             <motion.div 
-              className="absolute -top-4 -right-8 w-48 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
+              className="absolute -top-4 right-0 sm:-right-8 w-44 sm:w-48 h-16 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10"
               initial={{ opacity: 0, x: 30, y: -20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -213,7 +224,7 @@ export default function Home() {
 
             {/* Card 3 - Bottom Center - Roles */}
             <motion.div 
-              className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-56 h-14 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10 flex items-center justify-center"
+              className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-48 sm:w-56 h-14 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-gray-800 shadow-lg z-10 flex items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
@@ -236,28 +247,39 @@ export default function Home() {
                 className="border-2 border-[#F2F2F2]/50 rounded-lg"
                 style={{
                   position: 'absolute',
-                  width: '22rem',
-                  height: '22rem',
-                  background: 'transparent',
+                  width: isDesktop ? '24rem' : '18rem',
+                  height: isDesktop ? '32rem' : '24rem',
+                  transform: isDesktop ? 'rotate(45deg)' : 'none',
                   boxShadow: '0 0 15px rgba(242, 242, 242, 0.2)',
                 }}
                 initial={{
-                  rotate: 0,
                   opacity: 0.7,
                 }}
                 animate={{
-                  rotate: 360,
+                  rotate: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 360],
                 }}
                 transition={{
                   duration: 40,
                   repeat: Infinity,
                   ease: 'linear',
                 }}
+                variants={{
+                  hidden: { rotate: 0 },
+                  visible: (custom) => ({
+                    rotate: custom ? 360 : 0,
+                    transition: {
+                      duration: 40,
+                      repeat: custom ? Infinity : 0,
+                      ease: 'linear',
+                    },
+                  }),
+                }}
+                custom={window.innerWidth >= 768}
               />
             </motion.div>
             
             {/* Profile Image */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#F2F2F2]/20 z-0">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#F2F2F2]/20 z-0 mx-auto mt-8 sm:mt-0">
               <img 
                 src={profileImage} 
                 alt="Kshitij Jain" 
@@ -279,11 +301,11 @@ export default function Home() {
       <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
       
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section id="about" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Section Header */}
           <motion.div 
-            className="mb-16"
+            className="mb-8 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -291,7 +313,7 @@ export default function Home() {
           ></motion.div>
 
           {/* Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             {/* Left Column - Image */}
             <motion.div
               className="relative"
@@ -303,11 +325,11 @@ export default function Home() {
               }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <div className="relative z-10">
+              <div className="relative z-10 px-4 sm:px-0">
                 <img 
                   src={profileImage} 
                   alt="Kshitij Jain" 
-                  className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+                  className="w-full max-w-[280px] sm:max-w-md mx-auto rounded-2xl shadow-2xl"
                 />
               </div>
             </motion.div>
@@ -322,11 +344,11 @@ export default function Home() {
               }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h2 className="text-3xl font-bold mb-6">
-                I'm <span className="text-[#F2F2F2]">Kshitij Jain</span>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-6 text-center md:text-left text-gray-700">
+                I'm <span className="text-gray-700">Kshitij Jain</span>
               </h2>
               
-              <div className="space-y-6 text-gray-300 mb-8">
+              <div className="space-y-3 sm:space-y-6 text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">
                 <p>
                   A 2nd-year B.Tech student in Computer Science (AI & ML) at Poornima University, 
                   passionate about creating tech solutions that help people and solve real-life problems.
@@ -344,29 +366,29 @@ export default function Home() {
               </div>
 
               {/* Stats/Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
-                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 mt-6 sm:mt-12">
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-3 sm:p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-2 sm:mb-4 mx-auto sm:mx-0">
                     <FiAward className="w-6 h-6 text-[#F2F2F2]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">1+ Years</h3>
-                  <p className="text-gray-400">Experience in Web Development</p>
+                  <h3 className="text-sm sm:text-xl font-semibold text-[#F2F2F2] mb-1 sm:mb-2 text-center sm:text-left">1+ Years</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">Experience in Web Development</p>
                 </div>
                 
-                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
-                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-3 sm:p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-2 sm:mb-4 mx-auto sm:mx-0">
                     <FiCode className="w-6 h-6 text-[#F2F2F2]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">5+ Projects</h3>
-                  <p className="text-gray-400">Completed Successfully</p>
+                  <h3 className="text-sm sm:text-xl font-semibold text-[#F2F2F2] mb-1 sm:mb-2 text-center sm:text-left">5+ Projects</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">Completed Successfully</p>
                 </div>
                 
-                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
-                  <div className="w-12 h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-4">
+                <div className="bg-black/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-3 sm:p-6 hover:border-[#F2F2F2]/20 transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-[#F2F2F2]/10 rounded-xl flex items-center justify-center mb-2 sm:mb-4 mx-auto sm:mx-0">
                     <FiGlobe className="w-6 h-6 text-[#F2F2F2]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#F2F2F2] mb-2">Always</h3>
-                  <p className="text-gray-400">Learning & Growing</p>
+                  <h3 className="text-sm sm:text-xl font-semibold text-[#F2F2F2] mb-1 sm:mb-2 text-center sm:text-left">Always</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">Learning & Growing</p>
                 </div>
               </div>
             </motion.div>
@@ -374,19 +396,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
-      
       {/* Testimonials Section */}
-      <div id="testimonials">
+      <div id="testimonials" className="py-4">
         <Testimonials />
       </div>
       
       {/* Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent"></div>
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F2F2F2]/20 to-transparent my-4"></div>
       
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 md:px-12 bg-black">
+      <section id="contact" className="pt-12 pb-20 px-6 md:px-12 bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
             {/* Left Side - Contact Form */}
@@ -397,11 +416,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="md:col-span-7 space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-700/30">
-                Let's have a Chat
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-700 font-sans">
+                Let's Have a Chat
               </h2>
-              <p className="text-xl text-gray-300">
-                Want to talk tech, ideas, or building something useful? Let’s connect. <br /> Hit me up!
+              <p className="text-xl text-gray-700/90 mt-4 leading-relaxed">
+                Want to talk tech, ideas, or building something useful? Let's connect. <br /> Hit me up!
               </p>
               <a
                 href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
@@ -480,7 +499,7 @@ export default function Home() {
       <AnimatePresence>
         {!isChatOpen ? (
           <motion.div 
-            className="fixed bottom-8 right-8 z-50"
+            className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50"
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
               opacity: 1, 
@@ -493,60 +512,60 @@ export default function Home() {
             }}
           >
             <button 
-              className="w-14 h-14 rounded-full bg-[#F2F2F2] text-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#F2F2F2] text-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
               onClick={() => setIsChatOpen(true)}
               aria-label="Open chat"
             >
-              <FiMessageCircle className="w-6 h-6" />
+              <FiMessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </motion.div>
         ) : (
           <motion.div 
-            className="fixed bottom-8 right-8 z-50 w-100 bg-[#1a1a1a] rounded-xl shadow-2xl overflow-hidden border border-gray-800"
+            className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-[#1a1a1a] rounded-xl shadow-2xl overflow-hidden border border-gray-800"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
             {/* Chat Header */}
-            <div className="bg-[#1a1a1a] p-4 border-b border-gray-800 flex justify-between items-start">
+            <div className="bg-[#1a1a1a] p-3 sm:p-4 border-b border-gray-800 flex justify-between items-start">
               <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white mr-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-lg sm:text-xl font-bold text-white mr-2 sm:mr-3">
                   KJ
                 </div>
                 <div>
-                  <h4 className="text-white font-medium">Kshitij Jain</h4>
-                  <p className="text-sm text-gray-400">Product Designer</p>
+                  <h4 className="text-white font-medium text-sm sm:text-base">Kshitij Jain</h4>
+                  <p className="text-xs sm:text-sm text-gray-400">Web Developer</p>
                 </div>
               </div>
               <motion.button 
                 onClick={() => setIsChatOpen(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-700 rounded-full transition-colors"
                 aria-label="Close chat"
                 whileHover={{ rotate: 90, scale: 1.1 }}
                 whileTap={{ rotate: 180, scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 20 }}
               >
-                <FiX className="w-5 h-5" />
+                <FiX className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </div>
             
             {/* Chat Body */}
-            <div className="p-4">
-              
-              <div className="bg-[#222] p-4 rounded-lg mb-4">
-                <p className="text-gray-200">Hey there! 👋</p>
-                <p className="text-gray-200 mt-1">Want to chat about design, products, or anything digital?</p>
-                <p className="text-gray-400 text-sm mt-2">Click below to message me on LinkedIn!</p>
+            <div className="p-3 sm:p-4">
+              <div className="bg-[#222] p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
+                <p className="text-sm sm:text-base text-gray-200">Hey there! 👋</p>
+                <p className="text-sm sm:text-base text-gray-200">Kshitij here, Web Developer</p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-2">Want to chat about design, products, or anything digital?</p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-1">Click below to message me on LinkedIn!</p>
               </div>
               
               <a 
                 href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#0a5aad] text-white py-3 px-4 rounded-lg font-medium transition-colors"
+                className="w-full flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#0a5aad] text-white py-2.5 sm:py-3 px-4 rounded-lg font-medium text-sm sm:text-base transition-colors"
               >
-                <FiLinkedin className="w-5 h-5" />
+                <FiLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Message on LinkedIn</span>
               </a>
             </div>
@@ -652,7 +671,7 @@ export function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-6xl md:text-7xl font-serif font-extrabold italic tracking-tight text-gray-700/30 mb-12">WORK</h1>
+          <h1 className="text-6xl md:text-7xl font-serif font-extrabold italic tracking-tight text-gray-700 mb-12">WORK</h1>
         </motion.div>
 
         <motion.div 
