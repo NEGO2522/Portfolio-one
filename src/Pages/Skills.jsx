@@ -17,42 +17,42 @@ const SkillIcon = ({ name, icon }) => (
     whileHover={{ y: -5 }}
   >
     <div className="mb-2">{icon}</div>
-    <span className="text-sm font-medium text-white/80">{name}</span>
+    <span className="text-sm font-medium text-black/70">{name}</span>
   </motion.div>
 );
 
 const allSkills = [
-  { name: 'Python', icon: <FaPython className="w-12 h-12 text-gray-400" /> },
-  { name: 'JavaScript', icon: <FaJs className="w-12 h-12 text-gray-400" /> },
-  { name: 'React', icon: <FaReact className="w-12 h-12 text-gray-400" /> },
-  { name: 'Node.js', icon: <FaNodeJs className="w-12 h-12 text-gray-400" /> },
-  { name: 'Express.js', icon: <SiExpress className="w-12 h-12 text-gray-400" /> },
-  { name: 'Django', icon: <SiDjango className="w-12 h-12 text-gray-400" /> },
-  { name: 'Docker', icon: <FaDocker className="w-12 h-12 text-gray-400" /> },
-  { name: 'Kubernetes', icon: <SiKubernetes className="w-12 h-12 text-gray-400" /> },
-  { name: 'HTML5', icon: <FaHtml5 className="w-12 h-12 text-gray-400" /> },
-  { name: 'CSS3', icon: <FaCss3Alt className="w-12 h-12 text-gray-400" /> },
-  { name: 'SQL', icon: <FaDatabase className="w-12 h-12 text-gray-400" /> },
-  { name: 'Pandas', icon: <SiPandas className="w-12 h-12 text-gray-400" /> },
-  { name: 'NumPy', icon: <SiNumpy className="w-12 h-12 text-gray-400" /> },
-  { name: 'Scikit-Learn', icon: <SiScikitlearn className="w-12 h-12 text-gray-400" /> },
-  { name: 'Matplotlib', icon: <FaChartLine className="w-12 h-12 text-gray-400" /> },
-  { name: 'Seaborn', icon: <TbChartLine className="w-12 h-12 text-gray-400" /> },
-  { name: 'ML/AI', icon: <FaRobot className="w-12 h-12 text-gray-400" /> },
-  { name: 'OpenCV', icon: <SiOpencv className="w-12 h-12 text-gray-400" /> },
-  { name: 'Shell Scripting', icon: <SiGnubash className="w-12 h-12 text-gray-400" /> },
-  { name: 'Firebase', icon: <FaFire className="w-12 h-12 text-gray-400" /> },
-  { name: 'Tailwind', icon: <SiTailwindcss className="w-12 h-12 text-gray-400" /> },
-  { name: 'GitHub', icon: <FaGithub className="w-12 h-12 text-gray-400" /> },
-  { name: 'Git', icon: <FaGitAlt className="w-12 h-12 text-gray-400" /> },
+  { name: 'Python', icon: <FaPython className="w-12 h-12 text-gray-700" /> },
+  { name: 'JavaScript', icon: <FaJs className="w-12 h-12 text-gray-700" /> },
+  { name: 'React', icon: <FaReact className="w-12 h-12 text-gray-700" /> },
+  { name: 'Node.js', icon: <FaNodeJs className="w-12 h-12 text-gray-700" /> },
+  { name: 'Express.js', icon: <SiExpress className="w-12 h-12 text-gray-700" /> },
+  { name: 'Django', icon: <SiDjango className="w-12 h-12 text-gray-700" /> },
+  { name: 'Docker', icon: <FaDocker className="w-12 h-12 text-gray-700" /> },
+  { name: 'Kubernetes', icon: <SiKubernetes className="w-12 h-12 text-gray-700" /> },
+  { name: 'HTML5', icon: <FaHtml5 className="w-12 h-12 text-gray-700" /> },
+  { name: 'CSS3', icon: <FaCss3Alt className="w-12 h-12 text-gray-700" /> },
+  { name: 'SQL', icon: <FaDatabase className="w-12 h-12 text-gray-700" /> },
+  { name: 'Pandas', icon: <SiPandas className="w-12 h-12 text-gray-700" /> },
+  { name: 'NumPy', icon: <SiNumpy className="w-12 h-12 text-gray-700" /> },
+  { name: 'Scikit-Learn', icon: <SiScikitlearn className="w-12 h-12 text-gray-700" /> },
+  { name: 'Matplotlib', icon: <FaChartLine className="w-12 h-12 text-gray-700" /> },
+  { name: 'Seaborn', icon: <TbChartLine className="w-12 h-12 text-gray-700" /> },
+  { name: 'ML/AI', icon: <FaRobot className="w-12 h-12 text-gray-700" /> },
+  { name: 'OpenCV', icon: <SiOpencv className="w-12 h-12 text-gray-700" /> },
+  { name: 'Shell Scripting', icon: <SiGnubash className="w-12 h-12 text-gray-700" /> },
+  { name: 'Firebase', icon: <FaFire className="w-12 h-12 text-gray-700" /> },
+  { name: 'Tailwind', icon: <SiTailwindcss className="w-12 h-12 text-gray-700" /> },
+  { name: 'GitHub', icon: <FaGithub className="w-12 h-12 text-gray-700" /> },
+  { name: 'Git', icon: <FaGitAlt className="w-12 h-12 text-gray-700" /> },
 ];
 
 export default function Skills() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
       {/* Work Text */}
       <div className="absolute top-10 right-10 z-10">
-        <span className="text-6xl md:text-8xl font-bold text-gray-700/30 font-['Poppins']">
+        <span className="text-6xl md:text-8xl font-bold text-black/10">
           SKILLS
         </span>
       </div>
@@ -66,7 +66,7 @@ export default function Skills() {
 
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <motion.div 
-          className="bg-black rounded-3xl p-10 border border-gray-700 min-h-[600px]"
+          className="bg-white rounded-3xl p-10 border border-gray-200 min-h-[600px] shadow-sm"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
