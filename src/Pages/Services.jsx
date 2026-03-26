@@ -29,18 +29,6 @@ export function Services() {
       title: "High-Converting Business Websites",
       description: "Strategic design meets high performance. I create websites focused on turning visitors into customers through optimized user flows.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: "(5)",
-      title: "Beautiful User Interface Design",
-      description: "Visual excellence that aligns with your brand identity. I focus on clean layouts, intuitive navigation, and interactive elements.",
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: "(6)",
-      title: "Complete End-to-End Technical Solutions",
-      description: "From initial architecture and database design to deployment and maintenance, I handle the full lifecycle of your digital product.",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600",
     }
   ];
 
@@ -125,13 +113,13 @@ export function Services() {
 
         {/* Action Button - Shifted Left */}
         <div className="mt-20 flex justify-start relative z-10 md:ml-32 lg:ml-48">
-          <button 
-            className="group relative flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-xl active:scale-95 uppercase tracking-widest"
-            style={{ fontFamily: 'Syne, sans-serif' }}
-          >
-            Start Project 
-            <FiArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </button>
+            <button 
+                className="group relative flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-xl active:scale-95 uppercase tracking-widest"
+                style={{ fontFamily: 'Syne, sans-serif' }}
+            >
+                Contact Me
+                <FiArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            </button>
         </div>
       </div>
     </section>

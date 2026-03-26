@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiMapPin, FiMessageCircle, FiX, FiAward, FiCode, FiGlobe, FiExternalLink, FiTwitter, FiArrowUp } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
-import profileImage from '../assets/img.jpg';
+import profileImage from '../assets/img.png';
 import Testimonials from './Testimonials';
 import { Services } from './Services';
+import { Skills } from './Skills';
 
 function AnimatedLogo({ isDesktop }) {
   return (
@@ -86,53 +87,61 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black pb-12 md:pb-24 overflow-x-hidden" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-start justify-start p-4 sm:p-6 relative overflow-hidden pt-16 sm:pt-20">
-        {/* Radial Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-black/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
+      <section className="min-h-[80vh] flex flex-col justify-center p-4 sm:p-6 lg:p-12 relative overflow-hidden bg-white">
 
+        <div className="max-w-7xl mx-auto w-full relative pt-20">
+          {/* Main Title Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
 
-        <div className="flex flex-col md:flex-row items-start justify-between w-full px-2 sm:px-6 lg:px-8 relative z-10">
-          {/* Left — Name */}
-          <div className="w-full md:w-1/2 text-left px-1 sm:px-0 mb-8 sm:mb-0">
+            {/* Huge Name - Spans left and middle */}
             <motion.div
+              className="md:col-span-9"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-[18vw] md:text-[15rem] font-black tracking-tighter leading-[0.8] text-black">
+                Kshitij
+              </h1>
+            </motion.div>
+
+            {/* Small Right-aligned Info */}
+            <motion.div
+              className="md:col-span-3 flex flex-col items-start md:items-end text-left md:text-right gap-4 pb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
+              transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <div className="relative">
-                <h1 className="font-black mb-8 text-left tracking-tighter text-black leading-[0.9]" style={{ fontSize: 'clamp(140px, 18vw, 260px)', marginLeft: '8%', marginTop: '6rem' }}>
-                  Kshitij
-                </h1>
-              </div>
+              <p className="text-sm md:text-base text-gray-500 font-medium whitespace-nowrap">
+                Designing and building digital products<br />
+                that balance user needs and real-world problems.
+              </p>
+              <p className="text-sm sm:text-base text-gray-400 font-light text-left md:text-right whitespace-nowrap">
+                Exploring <b><u>AI</u></b>, <b><u>Web Dev</u></b>, and <u>Cloud solutions</u>.
+              </p>
+
+
+              <a
+                href="#contact"
+                className="bg-black text-white px-5 py-2 rounded-full flex items-center gap-2 text-sm font-bold hover:scale-105 transition-transform"
+              >
+                Let's Talk <FiArrowRight className="-rotate-45" />
+              </a>
             </motion.div>
           </div>
 
-          {/* Right — Description + Let's Talk btn */}
+          {/* Tech Stack Icons (The horizontal row below the name) */}
           <motion.div
-            className="w-full md:w-2/5 flex flex-col justify-end items-start md:items-end gap-6 pb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            style={{ marginTop: '8rem' }}
+            className="mt-16 flex flex-wrap items-center justify-between gap-6 opacity-40 grayscale"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ delay: 0.8 }}
           >
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed font-medium text-left md:text-right">
-              Designing and building digital products that<br />
-              balance user needs and real-world problems.
-            </p>
-            <p className="text-sm sm:text-base text-gray-400 font-light text-left md:text-right">
-              Exploring <b><u>AI</u></b>, <b><u>Web Dev</u></b>, and <u>Cloud solutions</u>.
-            </p>
-            <a
-              href="#contact"
-              className="mt-2 px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition-all duration-300 text-sm flex items-center gap-2"
-            >
-              Let's Talk
-              <FiArrowRight className="w-4 h-4" />
-            </a>
           </motion.div>
         </div>
+        <Skills />
       </section>
+
 
       {/* Social Media Boxes */}
       <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
