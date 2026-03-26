@@ -272,108 +272,106 @@ export default function Home() {
       </div>
       
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left Side - Numbered FAQ Items */}
-            <div className="space-y-2">
-              {[
-                {
-                  question: "What services do you offer?",
-                  answer: "I specialize in web development, AI integration, and creating digital solutions. My expertise includes React.js, Node.js, and modern web technologies."
-                },
-                {
-                  question: "How can we work together?",
-                  answer: "I'm open to freelance projects, collaborations, and full-time opportunities. Feel free to reach out through the contact form or email."
-                },
-                {
-                  question: "What's your typical project timeline?",
-                  answer: "Project timelines vary based on complexity. Most web applications take 2-8 weeks, while simpler projects can be completed in 1-2 weeks."
-                },
-                {
-                  question: "Do you offer ongoing support?",
-                  answer: "Yes, I provide post-launch support and maintenance services to ensure your project continues to run smoothly."
-                },
-                {
-                  question: "What technologies do you work with?",
-                  answer: "I work with React, Next.js, Node.js, Python, and various AI/ML tools. I'm always learning new technologies to stay current."
-                },
-                {
-                  question: "What's your pricing structure?",
-                  answer: "Pricing varies based on project scope and complexity. I offer competitive rates and can provide detailed quotes after understanding your requirements."
-                },
-                {
-                  question: "Can you help with existing projects?",
-                  answer: "Absolutely! I can help with debugging, feature additions, performance optimization, and complete overhauls of existing applications."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  className="border border-gray-200 rounded-2xl overflow-hidden"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <button
-                    onClick={() => {
-                      const allItems = document.querySelectorAll('.faq-answer');
-                      const currentAnswer = document.getElementById(`faq-answer-${index}`);
-                      
-                      // Close all other items
-                      allItems.forEach(item => {
-                        if (item !== currentAnswer) {
-                          item.classList.add('hidden');
-                        }
-                      });
-                      
-                      // Toggle current item
-                      currentAnswer.classList.toggle('hidden');
-                    }}
-                    className="w-full flex items-center gap-4 p-4 text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <span className="text-2xl font-bold text-black w-8">{index + 1}</span>
-                    <h3 className="text-lg font-semibold text-black">{faq.question}</h3>
-                  </button>
-                  <div id={`faq-answer-${index}`} className={`faq-answer ${index === 0 ? '' : 'hidden'} px-4 pb-4 pl-16`}>
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right Side - Styled Text */}
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+<section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <div className="max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      {/* Left Side - Numbered FAQ Items */}
+      <div className="space-y-2">
+        {[
+          {
+            question: " How long does it take to build a website?",
+            answer: "Timeline varies by complexity. A simple website takes 2-3 weeks, while custom web applications require 6-12 weeks. I'll provide a detailed timeline after understanding your requirements."
+          },
+          {
+            question: "Are you available to join full time?",
+            answer: "I'm open to freelance projects, collaborations, and full-time opportunities. Feel free to reach out through the contact form or email."
+          },
+          {
+            question: " Do you provide ongoing support after launch?",
+            answer: "Project timelines vary based on complexity. Most web applications take 2-8 weeks, while simpler projects can be completed in 1-2 weeks."
+          },
+          {
+            question: "Can you work with my existing brand and design?",
+            answer: "Yes, I provide post-launch support and maintenance services to ensure your project continues to run smoothly."
+          },
+          {
+            question: "Will my website work on mobile phones?",
+            answer: "I work with React, Next.js, Node.js, Python, and various AI/ML tools. I'm always learning new technologies to stay current."
+          },
+          {
+            question: "What technologies and frameworks do you specialize in?",
+            answer: "I work with modern tech stacks including Next.js, React.js, Node.js, and popular databases. I adapt quickly to new technologies and prioritize writing clean, maintainable code that scales."
+          },
+          {
+            question: "Do you help with hosting and domain setup??",
+            answer: "Absolutely! I can help with debugging, feature additions, performance optimization, and complete overhauls of existing applications."
+          }
+        ].map((faq, index) => (
+          <motion.div
+            key={index}
+            // Updated border color to border-gray-600 to match the button
+            className="border border-gray-600 rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <button
+              onClick={() => {
+                const allItems = document.querySelectorAll('.faq-answer');
+                const currentAnswer = document.getElementById(`faq-answer-${index}`);
+                
+                // Close all other items
+                allItems.forEach(item => {
+                  if (item !== currentAnswer) {
+                    item.classList.add('hidden');
+                  }
+                });
+                
+                // Toggle current item
+                currentAnswer.classList.toggle('hidden');
+              }}
+              className="w-full flex items-center gap-4 p-4 text-left hover:bg-gray-50 transition-colors"
             >
-              <div>
-                <h2 className="text-xl font-black text-black mb-2">FAQ</h2>
-                <h3 className="text-4xl md:text-5xl font-bold text-black mb-2">Questions you</h3>
-                <h3 className="text-3xl md:text-4xl font-semibold text-black mb-2">might be wondering</h3>
-                
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  Got questions? I've got answers. Here's everything you need to know about working with me.
-                </p>
-                
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-gray-600 text-white font-medium rounded-full hover:bg-gray-700 transition-all duration-300 text-sm"
-                >
-                  Contact Me
-                  <FiArrowUp className="w-4 h-4" />
-                </a>
-              </div>
-            </motion.div>
-          </div>
+              <span className="text-2xl font-bold text-black w-8">{index + 1}</span>
+              <h3 className="text-lg font-semibold text-black">{faq.question}</h3>
+            </button>
+            <div id={`faq-answer-${index}`} className={`faq-answer ${index === 0 ? '' : 'hidden'} px-4 pb-4 pl-16`}>
+              <p className="text-gray-600">{faq.answer}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Right Side - Styled Text */}
+      <motion.div
+        className="space-y-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div>
+          <h2 className="text-xl font-black text-black mb-2">FAQ</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-black mb-2">Questions you</h3>
+          <h3 className="text-3xl md:text-4xl font-semibold text-black mb-2">might be wondering</h3>
+          
+          <p className="text-lg text-gray-600 leading-relaxed mb-4">
+            Got questions? I've got answers. Here's everything you need to know about working with me.
+          </p>
+          
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-gray-600 text-white font-medium rounded-full hover:bg-gray-700 transition-all duration-300 text-sm"
+          >
+            Contact Me
+            <FiArrowUp className="w-4 h-4" />
+          </a>
         </div>
-      </section>
-      
-      {/* Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent my-4"></div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
 
       {/* Chat Widget */}
