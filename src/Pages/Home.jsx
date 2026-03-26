@@ -6,6 +6,7 @@ import profileImage from '../assets/img.png';
 import Testimonials from './Testimonials';
 import { Services } from './Services';
 import { Skills } from './Skills';
+import Footer from './Footer';
 
 function AnimatedLogo({ isDesktop }) {
   return (
@@ -72,24 +73,13 @@ function AnimatedLogo({ isDesktop }) {
 }
 
 function ProfileImage() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
-
   return (
-    <div 
-      ref={containerRef}
+    <div
       className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white bg-gray-100 max-w-7xl mx-auto"
     >
-      <motion.img 
-        style={{ y, scale }} 
-        src={profileImage} 
-        alt="Kshitij" 
+      <img
+        src={profileImage}
+        alt="Kshitij"
         className="w-full h-auto object-cover grayscale brightness-95"
       />
     </div>
@@ -110,7 +100,7 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div className="min-h-screen bg-white text-black pb-12 md:pb-24 overflow-x-hidden" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
+    <div className="text-black overflow-x-hidden" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
       {/* Hero Section */}
       <section className="min-h-[80vh] flex flex-col justify-center p-4 sm:p-6 lg:p-12 relative overflow-hidden bg-white">
 
@@ -176,27 +166,27 @@ export default function Home() {
       <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-5 gap-4 w-full">
           <a href="https://discord.com" target="_blank" rel="noopener noreferrer" title="Discord"
-            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300"
+            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300 bg-white"
             style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
             <FaDiscord className="w-9 h-9" />
           </a>
           <a href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
-            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300"
+            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300 bg-white"
             style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
             <FiLinkedin className="w-9 h-9" />
           </a>
           <a href="https://github.com/NEGO2522" target="_blank" rel="noopener noreferrer" title="GitHub"
-            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300"
+            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300 bg-white"
             style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
             <FiGithub className="w-9 h-9" />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter / X"
-            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300"
+            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300 bg-white"
             style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
             <FiTwitter className="w-9 h-9" />
           </a>
           <a href="mailto:nextgenova28@gmail.com" title="Email"
-            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300"
+            className="flex items-center justify-center border border-gray-200 rounded-2xl text-gray-400 shadow-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-600 transition-all duration-300 bg-white"
             style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
             <FiMail className="w-9 h-9" />
           </a>
@@ -433,66 +423,81 @@ export default function Home() {
             }}
           >
             <button
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#F2F2F2] text-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all border border-white/10"
               onClick={() => setIsChatOpen(true)}
               aria-label="Open chat"
             >
-              <FiMessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+              <FiMessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
           </motion.div>
         ) : (
           <motion.div
-            className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-[#1a1a1a] rounded-xl shadow-2xl overflow-hidden border border-gray-800"
+            className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-[#121212] rounded-3xl shadow-2xl overflow-hidden border border-white/10"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
-            {/* Chat Header */}
-            <div className="bg-[#1a1a1a] p-3 sm:p-4 border-b border-gray-800 flex justify-between items-start">
-              <div className="flex items-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-lg sm:text-xl font-bold text-white mr-2 sm:mr-3">
-                  KJ
+            {/* IMPROVED CHAT HEADER */}
+            <div className="relative bg-gradient-to-b from-white/5 to-transparent p-5 border-b border-white/5 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-lg font-bold text-black shadow-lg">
+                    KJ
+                  </div>
+                  {/* Online Status Indicator */}
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-[#121212] rounded-full"></span>
                 </div>
-                <div>
-                  <h4 className="text-white font-medium text-sm sm:text-base">Kshitij Jain</h4>
-                  <p className="text-xs sm:text-sm text-gray-400">Web Developer</p>
+
+                <div className="flex flex-col">
+                  <h4 className="text-white font-bold text-base tracking-tight">Kshitij Jain</h4>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <p className="text-[11px] uppercase tracking-widest font-semibold text-gray-400">Available to Chat</p>
+                  </div>
                 </div>
               </div>
+
               <motion.button
                 onClick={() => setIsChatOpen(false)}
-                className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-700 rounded-full transition-colors"
+                className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition-all"
                 aria-label="Close chat"
-                whileHover={{ rotate: 90, scale: 1.1 }}
-                whileTap={{ rotate: 180, scale: 0.9 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <FiX className="w-4 h-4 sm:w-5 sm:h-5" />
+                <FiX className="w-5 h-5" />
               </motion.button>
             </div>
 
             {/* Chat Body */}
-            <div className="p-3 sm:p-4">
-              <div className="bg-[#222] p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
-                <p className="text-sm sm:text-base text-gray-200">Hey there! 👋</p>
-                <p className="text-sm sm:text-base text-gray-200">Kshitij here, Web Developer</p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-2">Want to chat about design, products, or anything digital?</p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">Click below to message me on LinkedIn!</p>
+            <div className="p-6">
+              <div className="bg-white/5 border border-white/5 p-4 rounded-2xl mb-6 backdrop-blur-sm">
+                <p className="text-sm sm:text-base text-gray-200 leading-relaxed">
+                  Hey there! 👋 <br />
+                  I'm <span className="text-blue-400 font-medium">Kshitij</span>. I specialize in building digital products.
+                </p>
+                <div className="mt-4 pt-4 border-t border-white/5">
+                  <p className="text-xs text-gray-400 italic">"Design is not just what it looks like, but how it works."</p>
+                </div>
               </div>
 
               <a
                 href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#0a5aad] text-white py-2.5 sm:py-3 px-4 rounded-lg font-medium text-sm sm:text-base transition-colors"
+                className="w-full flex items-center justify-center space-x-3 bg-white text-black hover:bg-gray-200 py-3.5 px-4 rounded-2xl font-bold text-sm transition-all shadow-lg active:scale-95"
               >
-                <FiLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>Message on LinkedIn</span>
+                <FiLinkedin className="w-5 h-5" />
+                <span>Let's Connect on LinkedIn</span>
               </a>
+
+              <p className="text-center text-[10px] text-gray-500 mt-4 uppercase tracking-[0.2em]">Typical reply time: 1-2 hours</p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Footer />
     </div>
   );
 }

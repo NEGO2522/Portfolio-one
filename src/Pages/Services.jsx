@@ -40,7 +40,7 @@ export function Services() {
         
         {/* Background "Services" Text - Reduced size and width */}
         <div className="absolute top-[-20px] md:top-[-10px] left-0 right-0 flex justify-start md:justify-center pointer-events-none select-none z-0 pl-10 md:pl-0">
-          <h1 className="text-[100px] md:text-[160px] font-extrabold tracking-[-0.05em] leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/5 to-white/10 inline-block uppercase" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h1 className="text-[120px] md:text-[200px] font-extrabold tracking-[-0.05em] leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/5 to-white/10 inline-block uppercase" style={{ fontFamily: 'Syne, sans-serif' }}>
             Services
           </h1>
         </div>
