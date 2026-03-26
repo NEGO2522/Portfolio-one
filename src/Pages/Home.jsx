@@ -4,20 +4,21 @@ import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiMapP
 import { FaDiscord } from 'react-icons/fa';
 import profileImage from '../assets/img.jpg';
 import Testimonials from './Testimonials';
+import { Services } from './Services';
 
 function AnimatedLogo({ isDesktop }) {
   return (
     <motion.div
       className="absolute top-6 left-6 z-10"
       initial={{ scale: 0, rotate: -180 }}
-      animate={{ 
-        scale: 1, 
+      animate={{
+        scale: 1,
         rotate: 0,
-        transition: { 
-          type: 'spring', 
-          stiffness: 100, 
-          damping: 10 
-        } 
+        transition: {
+          type: 'spring',
+          stiffness: 100,
+          damping: 10
+        }
       }}
       whileHover={{
         scale: 1.1,
@@ -27,7 +28,7 @@ function AnimatedLogo({ isDesktop }) {
     >
       <div className="relative w-12 h-12">
         {/* Simple animated dot */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-full"
           animate={{
             rotate: 360,
@@ -38,7 +39,7 @@ function AnimatedLogo({ isDesktop }) {
             ease: 'linear'
           }}
         >
-          <motion.div 
+          <motion.div
             className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rounded-full"
             animate={isDesktop ? {
               rotate: -360,
@@ -50,13 +51,13 @@ function AnimatedLogo({ isDesktop }) {
             } : {}}
           />
         </motion.div>
-        
+
         {/* KJ Text */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <motion.span 
+          <motion.span
             className="text-xl font-bold text-gray-800"
             initial={{ opacity: 0 }}
-            animate={{ 
+            animate={{
               opacity: 1,
               transition: { delay: 0.5 }
             }}
@@ -77,7 +78,7 @@ export default function Home() {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
     };
-    
+
     handleResize(); // Set initial value
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -166,15 +167,15 @@ export default function Home() {
 
       {/* Projects Section */}
       <Projects />
-      
+
       {/* Divider */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
-      
+
       {/* About Section */}
       <section id="about" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Section Header */}
-          <motion.div 
+          <motion.div
             className="mb-8 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,17 +189,17 @@ export default function Home() {
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: -50 }}
-              whileInView={{ 
-                opacity: 1, 
+              whileInView={{
+                opacity: 1,
                 x: 0,
                 transition: { duration: 0.8 }
               }}
               viewport={{ once: true, margin: "-100px" }}
             >
               <div className="relative z-10 px-4 sm:px-0">
-                <img 
-                  src={profileImage} 
-                  alt="Kshitij Jain" 
+                <img
+                  src={profileImage}
+                  alt="Kshitij Jain"
                   className="w-full max-w-[280px] sm:max-w-md mx-auto rounded-2xl shadow-2xl"
                 />
               </div>
@@ -207,8 +208,8 @@ export default function Home() {
             {/* Right Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              whileInView={{ 
-                opacity: 1, 
+              whileInView={{
+                opacity: 1,
                 x: 0,
                 transition: { duration: 0.8, delay: 0.2 }
               }}
@@ -217,20 +218,20 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-6 text-center md:text-left text-black">
                 I'm <span className="text-black">Kshitij Jain</span>
               </h2>
-              
+
               <div className="space-y-3 sm:space-y-6 text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
                 <p>
-                  A 2nd-year B.Tech student in Computer Science (AI & ML) at Poornima University, 
+                  A 2nd-year B.Tech student in Computer Science (AI & ML) at Poornima University,
                   passionate about creating tech solutions that help people and solve real-life problems.
                 </p>
-                
+
                 <p>
-                  My interests lie in web development, AI, and entrepreneurship. I'm currently working on innovative projects 
+                  My interests lie in web development, AI, and entrepreneurship. I'm currently working on innovative projects
                   like a EdTech platform and focusing on making AI models.
                 </p>
-                
+
                 <p>
-                  In my free time, I enjoy playing football and volleyball, reading books, and watching inspiring movies. 
+                  In my free time, I enjoy playing football and volleyball, reading books, and watching inspiring movies.
                   I'm constantly striving to improve and contribute to meaningful change through technology.
                 </p>
               </div>
@@ -244,7 +245,7 @@ export default function Home() {
                   <h3 className="text-sm sm:text-xl font-semibold text-black mb-1 sm:mb-2 text-center sm:text-left">1+ Years</h3>
                   <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">Experience in Web Development</p>
                 </div>
-                
+
                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 sm:p-6 transition-all duration-300">
                   <div className="w-8 h-8 sm:w-12 sm:h-12 bg-black/5 rounded-xl flex items-center justify-center mb-2 sm:mb-4 mx-auto sm:mx-0">
                     <FiCode className="w-6 h-6 text-black" />
@@ -252,7 +253,7 @@ export default function Home() {
                   <h3 className="text-sm sm:text-xl font-semibold text-black mb-1 sm:mb-2 text-center sm:text-left">5+ Projects</h3>
                   <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">Completed Successfully</p>
                 </div>
-                
+
                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 sm:p-6 transition-all duration-300">
                   <div className="w-8 h-8 sm:w-12 sm:h-12 bg-black/5 rounded-xl flex items-center justify-center mb-2 sm:mb-4 mx-auto sm:mx-0">
                     <FiGlobe className="w-6 h-6 text-black" />
@@ -270,127 +271,130 @@ export default function Home() {
       <div id="testimonials" className="py-4">
         <Testimonials />
       </div>
-      
-      {/* FAQ Section */}
-<section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-  <div className="max-w-6xl mx-auto">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-      {/* Left Side - Numbered FAQ Items */}
-      <div className="space-y-2">
-        {[
-          {
-            question: " How long does it take to build a website?",
-            answer: "Timeline varies by complexity. A simple website takes 2-3 weeks, while custom web applications require 6-12 weeks. I'll provide a detailed timeline after understanding your requirements."
-          },
-          {
-            question: "Are you available to join full time?",
-            answer: "I'm open to freelance projects, collaborations, and full-time opportunities. Feel free to reach out through the contact form or email."
-          },
-          {
-            question: " Do you provide ongoing support after launch?",
-            answer: "Project timelines vary based on complexity. Most web applications take 2-8 weeks, while simpler projects can be completed in 1-2 weeks."
-          },
-          {
-            question: "Can you work with my existing brand and design?",
-            answer: "Yes, I provide post-launch support and maintenance services to ensure your project continues to run smoothly."
-          },
-          {
-            question: "Will my website work on mobile phones?",
-            answer: "I work with React, Next.js, Node.js, Python, and various AI/ML tools. I'm always learning new technologies to stay current."
-          },
-          {
-            question: "What technologies and frameworks do you specialize in?",
-            answer: "I work with modern tech stacks including Next.js, React.js, Node.js, and popular databases. I adapt quickly to new technologies and prioritize writing clean, maintainable code that scales."
-          },
-          {
-            question: "Do you help with hosting and domain setup??",
-            answer: "Absolutely! I can help with debugging, feature additions, performance optimization, and complete overhauls of existing applications."
-          }
-        ].map((faq, index) => (
-          <motion.div
-            key={index}
-            // Updated border color to border-gray-600 to match the button
-            className="border border-gray-600 rounded-2xl overflow-hidden"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <button
-              onClick={() => {
-                const allItems = document.querySelectorAll('.faq-answer');
-                const currentAnswer = document.getElementById(`faq-answer-${index}`);
-                
-                // Close all other items
-                allItems.forEach(item => {
-                  if (item !== currentAnswer) {
-                    item.classList.add('hidden');
-                  }
-                });
-                
-                // Toggle current item
-                currentAnswer.classList.toggle('hidden');
-              }}
-              className="w-full flex items-center gap-4 p-4 text-left hover:bg-gray-50 transition-colors"
-            >
-              <span className="text-2xl font-bold text-black w-8">{index + 1}</span>
-              <h3 className="text-lg font-semibold text-black">{faq.question}</h3>
-            </button>
-            <div id={`faq-answer-${index}`} className={`faq-answer ${index === 0 ? '' : 'hidden'} px-4 pb-4 pl-16`}>
-              <p className="text-gray-600">{faq.answer}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
 
-      {/* Right Side - Styled Text */}
-      <motion.div
-        className="space-y-8"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div>
-          <h2 className="text-xl font-black text-black mb-2">FAQ</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-black mb-2">Questions you</h3>
-          <h3 className="text-3xl md:text-4xl font-semibold text-black mb-2">might be wondering</h3>
-          
-          <p className="text-lg text-gray-600 leading-relaxed mb-4">
-            Got questions? I've got answers. Here's everything you need to know about working with me.
-          </p>
-          
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-gray-600 text-white font-medium rounded-full hover:bg-gray-700 transition-all duration-300 text-sm"
-          >
-            Contact Me
-            <FiArrowUp className="w-4 h-4" />
-          </a>
+      {/* Services Section */}
+      <Services />
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Side - Numbered FAQ Items */}
+            <div className="space-y-2">
+              {[
+                {
+                  question: " How long does it take to build a website?",
+                  answer: "Timeline varies by complexity. A simple website takes 2-3 weeks, while custom web applications require 6-12 weeks. I'll provide a detailed timeline after understanding your requirements."
+                },
+                {
+                  question: "Are you available to join full time?",
+                  answer: "I'm open to freelance projects, collaborations, and full-time opportunities. Feel free to reach out through the contact form or email."
+                },
+                {
+                  question: " Do you provide ongoing support after launch?",
+                  answer: "Project timelines vary based on complexity. Most web applications take 2-8 weeks, while simpler projects can be completed in 1-2 weeks."
+                },
+                {
+                  question: "Can you work with my existing brand and design?",
+                  answer: "Yes, I provide post-launch support and maintenance services to ensure your project continues to run smoothly."
+                },
+                {
+                  question: "Will my website work on mobile phones?",
+                  answer: "I work with React, Next.js, Node.js, Python, and various AI/ML tools. I'm always learning new technologies to stay current."
+                },
+                {
+                  question: "What technologies and frameworks do you specialize in?",
+                  answer: "I work with modern tech stacks including Next.js, React.js, Node.js, and popular databases. I adapt quickly to new technologies and prioritize writing clean, maintainable code that scales."
+                },
+                {
+                  question: "Do you help with hosting and domain setup??",
+                  answer: "Absolutely! I can help with debugging, feature additions, performance optimization, and complete overhauls of existing applications."
+                }
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  // Updated border color to border-gray-600 to match the button
+                  className="border border-gray-600 rounded-2xl overflow-hidden"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <button
+                    onClick={() => {
+                      const allItems = document.querySelectorAll('.faq-answer');
+                      const currentAnswer = document.getElementById(`faq-answer-${index}`);
+
+                      // Close all other items
+                      allItems.forEach(item => {
+                        if (item !== currentAnswer) {
+                          item.classList.add('hidden');
+                        }
+                      });
+
+                      // Toggle current item
+                      currentAnswer.classList.toggle('hidden');
+                    }}
+                    className="w-full flex items-center gap-4 p-4 text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="text-2xl font-bold text-black w-8">{index + 1}</span>
+                    <h3 className="text-lg font-semibold text-black">{faq.question}</h3>
+                  </button>
+                  <div id={`faq-answer-${index}`} className={`faq-answer ${index === 0 ? '' : 'hidden'} px-4 pb-4 pl-16`}>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right Side - Styled Text */}
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div>
+                <h2 className="text-xl font-black text-black mb-2">FAQ</h2>
+                <h3 className="text-4xl md:text-5xl font-bold text-black mb-2">Questions you</h3>
+                <h3 className="text-3xl md:text-4xl font-semibold text-black mb-2">might be wondering</h3>
+
+                <p className="text-lg text-gray-600 leading-relaxed mb-4">
+                  Got questions? I've got answers. Here's everything you need to know about working with me.
+                </p>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-gray-600 text-white font-medium rounded-full hover:bg-gray-700 transition-all duration-300 text-sm"
+                >
+                  Contact Me
+                  <FiArrowUp className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
 
       {/* Chat Widget */}
       <AnimatePresence>
         {!isChatOpen ? (
-          <motion.div 
+          <motion.div
             className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               y: 0,
               transition: { delay: 0.5 }
             }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
               transition: { duration: 0.2 }
             }}
           >
-            <button 
+            <button
               className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#F2F2F2] text-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
               onClick={() => setIsChatOpen(true)}
               aria-label="Open chat"
@@ -399,7 +403,7 @@ export default function Home() {
             </button>
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-[#1a1a1a] rounded-xl shadow-2xl overflow-hidden border border-gray-800"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -417,7 +421,7 @@ export default function Home() {
                   <p className="text-xs sm:text-sm text-gray-400">Web Developer</p>
                 </div>
               </div>
-              <motion.button 
+              <motion.button
                 onClick={() => setIsChatOpen(false)}
                 className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-700 rounded-full transition-colors"
                 aria-label="Close chat"
@@ -428,7 +432,7 @@ export default function Home() {
                 <FiX className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </div>
-            
+
             {/* Chat Body */}
             <div className="p-3 sm:p-4">
               <div className="bg-[#222] p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
@@ -437,10 +441,10 @@ export default function Home() {
                 <p className="text-xs sm:text-sm text-gray-400 mt-2">Want to chat about design, products, or anything digital?</p>
                 <p className="text-xs sm:text-sm text-gray-400 mt-1">Click below to message me on LinkedIn!</p>
               </div>
-              
-              <a 
-                href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" 
-                target="_blank" 
+
+              <a
+                href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#0a5aad] text-white py-2.5 sm:py-3 px-4 rounded-lg font-medium text-sm sm:text-base transition-colors"
               >
@@ -518,13 +522,13 @@ const container = {
 };
 
 const item = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 30,
     scale: 0.98
   },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
@@ -539,11 +543,12 @@ const item = {
   }
 };
 
+
 export function Projects() {
   return (
     <section id="work" className="bg-white text-black py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <motion.div 
+        <motion.div
           className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -553,7 +558,7 @@ export function Projects() {
           <h1 className="text-6xl md:text-7xl font-extrabold italic tracking-tight text-gray-700 mb-12">WORK</h1>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -561,7 +566,7 @@ export function Projects() {
           className="space-y-8"
         >
           {projects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className={`py-6 ${index < projects.length - 1 ? 'border-b border-gray-200' : ''} cursor-pointer`}
               variants={item}
@@ -574,7 +579,7 @@ export function Projects() {
                   <div className="flex items-center justify-between">
                     <h2 className="text-3xl md:text-4xl font-black tracking-tight text-black">{project.title}</h2>
                     <div className="flex space-x-2">
-                      <a 
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
