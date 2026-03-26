@@ -80,7 +80,7 @@ function ProfileImage() {
       <img
         src={profileImage}
         alt="Kshitij"
-        className="w-full h-auto object-cover grayscale brightness-95"
+        className="w-full h-auto object-cover brightness-95"
       />
     </div>
   );
