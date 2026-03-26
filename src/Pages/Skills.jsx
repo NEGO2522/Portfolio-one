@@ -36,7 +36,7 @@ export function Skills() {
   const duplicatedSkills = [...skills, ...skills];
 
   return (
-    <section className="w-full bg-white py-6 overflow-hidden">
+    <section className="w-full bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-12">
           {/* Skills Marquee */}
@@ -71,8 +71,7 @@ export function Skills() {
 
           {/* Right Side Text */}
           <div className="flex flex-col justify-center pl-8 flex-shrink-0">
-            <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Not Just Tech</p>
-            <p className="text-2xl font-black text-black">800+ Hours of Hands-on Experience</p>
+            <p className="text-2xl font-black text-black">100+ Hours of Hands-on Experience</p>
           </div>
         </div>
       </div>

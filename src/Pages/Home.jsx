@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiMapPin, FiMessageCircle, FiX, FiAward, FiCode, FiGlobe, FiExternalLink, FiTwitter, FiArrowUp } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
 import profileImage from '../assets/img.png';
@@ -68,6 +68,31 @@ function AnimatedLogo({ isDesktop }) {
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function ProfileImage() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white bg-gray-100 max-w-7xl mx-auto"
+    >
+      <motion.img 
+        style={{ y, scale }} 
+        src={profileImage} 
+        alt="Kshitij" 
+        className="w-full h-auto object-cover grayscale brightness-95"
+      />
+    </div>
   );
 }
 
@@ -142,6 +167,10 @@ export default function Home() {
         <Skills />
       </section>
 
+      {/* Profile Image */}
+      <div className="w-full px-4 sm:px-6 lg:px-8 -mt-20">
+        <ProfileImage />
+      </div>
 
       {/* Social Media Boxes */}
       <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
@@ -556,7 +585,7 @@ const item = {
 export function Projects() {
   return (
     <section id="work" className="bg-white text-black py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="w-full">
         <motion.div
           className="mb-12"
           initial={{ opacity: 0, y: 20 }}
