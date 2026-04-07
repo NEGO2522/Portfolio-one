@@ -19,7 +19,7 @@ const FONT = { fontFamily: '"Clash Display", "DM Sans", "Segoe UI", system-ui, s
 function AnimatedLogo() {
   return (
     <motion.div
-      className="absolute top-7 left-7 z-20"
+      className="absolute top-20 sm:top-7 left-7 z-20"
       initial={{ scale: 0, rotate: -180 }}
       animate={{ scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 12 } }}
       whileHover={{ scale: 1.12, rotate: 6, transition: { duration: 0.25 } }}
@@ -41,7 +41,7 @@ function AnimatedLogo() {
 /* ─── ProfileImage ──────────────────────────────────────────────────────── */
 function ProfileImage() {
   return (
-    <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.18)] border-[10px] border-white bg-gray-100 max-w-7xl mx-auto">
+    <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.18)] border-[6px] sm:border-[10px] border-white bg-gray-100 max-w-7xl mx-auto">
       <img
         src={profileImage}
         alt="Kshitij"
@@ -60,13 +60,12 @@ function SocialPill({ href, icon: Icon, label }) {
       target="_blank"
       rel="noopener noreferrer"
       title={label}
-      className="group relative flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white overflow-hidden"
-      style={{ paddingTop: '2.75rem', paddingBottom: '2.75rem' }}
+      className="group relative flex flex-col items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl border border-gray-200 bg-white overflow-hidden py-6 sm:py-10 md:py-11"
       whileHover={{ y: -4, scale: 1.03, borderColor: '#000' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
-      <Icon className="w-8 h-8 text-gray-400 group-hover:text-black transition-colors duration-200 relative z-10" />
-      <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-black transition-colors duration-200 font-semibold relative z-10">
+      <Icon className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-gray-400 group-hover:text-black transition-colors duration-200 relative z-10" />
+      <span className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-black transition-colors duration-200 font-semibold relative z-10 hidden xs:block sm:block">
         {label}
       </span>
       <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -74,7 +73,7 @@ function SocialPill({ href, icon: Icon, label }) {
   );
 }
 
-/* ─── Section Divider — matches every other divider in the page ─────────── */
+/* ─── Section Divider ─────────────────────────────────────────────────────── */
 function Divider() {
   return (
     <div className="w-full px-5 sm:px-8 lg:px-14">
@@ -87,10 +86,6 @@ function Divider() {
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
-
-  useEffect(() => {
-    // no resize tracking needed since isDesktop is unused
-  }, []);
 
   const faqs = [
     {
@@ -127,7 +122,7 @@ export default function Home() {
     <div className="text-black overflow-x-hidden bg-white" style={FONT}>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="min-h-[88vh] flex flex-col justify-center relative overflow-hidden bg-white">
+      <section className="min-h-[60vh] sm:min-h-[88vh] flex flex-col justify-center relative overflow-hidden bg-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{
@@ -139,16 +134,17 @@ export default function Home() {
         <AnimatedLogo />
 
         <motion.div
-          className="absolute top-7 right-7 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 text-xs font-semibold text-gray-600 tracking-wide"
+          className="absolute top-7 right-7 z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 border border-black/10 text-[10px] sm:text-xs font-semibold text-gray-600 tracking-wide"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          Available for work
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+          <span className="hidden xs:inline sm:inline">Available for work</span>
+          <span className="xs:hidden sm:hidden">Available</span>
         </motion.div>
 
-        <div className="max-w-[1600px] mx-auto w-full px-5 sm:px-8 lg:px-14 pt-24 pb-4">
+        <div className="max-w-[1600px] mx-auto w-full px-5 sm:px-8 lg:px-14 pt-36 sm:pt-24 pb-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
             <motion.div
               className="md:col-span-8"
@@ -165,7 +161,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              className="md:col-span-4 flex flex-col items-start gap-5 pb-3"
+              className="md:col-span-4 flex flex-col items-start gap-4 sm:gap-5 pb-3"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -196,7 +192,7 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="mt-10 flex items-center gap-3"
+            className="mt-8 sm:mt-10 flex items-center gap-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
@@ -210,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* ── Profile Image ─────────────────────────────────────────────────── */}
-      <div className="w-full px-5 sm:px-8 lg:px-14 -mt-16">
+      <div className="w-full px-4 sm:px-8 lg:px-14 -mt-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -222,8 +218,8 @@ export default function Home() {
       </div>
 
       {/* ── Social Media Row ───────────────────────────────────────────────── */}
-      <div className="w-full px-5 sm:px-8 lg:px-14 py-10">
-        <div className="grid grid-cols-5 gap-3 sm:gap-4 w-full">
+      <div className="w-full px-4 sm:px-8 lg:px-14 py-8 sm:py-10">
+        <div className="grid grid-cols-5 gap-2 sm:gap-3 sm:gap-4 w-full">
           <SocialPill href="https://discord.com" icon={FaDiscord} label="Discord" />
           <SocialPill href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" icon={FiLinkedin} label="LinkedIn" />
           <SocialPill href="https://github.com/NEGO2522" icon={FiGithub} label="GitHub" />
@@ -238,10 +234,10 @@ export default function Home() {
       <Divider />
 
       {/* ── About ─────────────────────────────────────────────────────────── */}
-      <section id="about" className="py-20 sm:py-28 px-5 sm:px-8 lg:px-14 bg-white overflow-hidden">
+      <section id="about" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
 
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>
               <motion.p
                 className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-3"
@@ -253,7 +249,7 @@ export default function Home() {
                 About Me
               </motion.p>
               <motion.h2
-                className="text-5xl sm:text-6xl md:text-7xl font-black text-black leading-none"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none"
                 style={{ letterSpacing: '-0.04em' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -294,16 +290,16 @@ export default function Home() {
                   className="w-full rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] object-cover"
                   style={{ maxHeight: '500px', objectPosition: 'top' }}
                 />
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/60 rounded-2xl px-4 py-2.5 shadow-lg">
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/60 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-lg">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-                  <span className="text-xs font-bold text-gray-700 tracking-wide">Open to opportunities</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-gray-700 tracking-wide">Open to opportunities</span>
                 </div>
-                <div className="absolute -top-3 -right-3 w-14 h-14 rounded-2xl border-2 border-gray-100 bg-white shadow-md flex items-center justify-center text-2xl select-none">
+                <div className="absolute -top-3 -right-3 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 border-gray-100 bg-white shadow-md flex items-center justify-center text-xl sm:text-2xl select-none">
                   👋
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {[
                   { value: '1+', label: 'Years Exp.' },
                   { value: '5+', label: 'Projects' },
@@ -311,17 +307,17 @@ export default function Home() {
                 ].map(({ value, label }, i) => (
                   <motion.div
                     key={i}
-                    className="group flex flex-col items-center justify-center py-5 rounded-2xl border border-gray-200 bg-white hover:border-black hover:bg-black transition-all duration-300 cursor-default"
+                    className="group flex flex-col items-center justify-center py-4 sm:py-5 rounded-2xl border border-gray-200 bg-white hover:border-black hover:bg-black transition-all duration-300 cursor-default"
                     whileHover={{ y: -3 }}
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + i * 0.08 }}
                   >
-                    <span className="text-2xl font-black text-black group-hover:text-white transition-colors duration-300 tracking-tight">
+                    <span className="text-xl sm:text-2xl font-black text-black group-hover:text-white transition-colors duration-300 tracking-tight">
                       {value}
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-white/60 transition-colors duration-300 mt-1 font-semibold">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-white/60 transition-colors duration-300 mt-1 font-semibold">
                       {label}
                     </span>
                   </motion.div>
@@ -331,13 +327,13 @@ export default function Home() {
 
             {/* RIGHT */}
             <motion.div
-              className="lg:col-span-7 flex flex-col gap-8"
+              className="lg:col-span-7 flex flex-col gap-6 sm:gap-8"
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="space-y-5 text-gray-500 text-base sm:text-lg leading-relaxed">
+              <div className="space-y-4 sm:space-y-5 text-gray-500 text-base sm:text-lg leading-relaxed">
                 <p>
                   Hey, I'm <span className="font-bold text-black">Kshitij Jain</span> — a 2nd-year B.Tech
                   student in Computer Science (AI & ML) at Poornima University. I build things for the web
@@ -361,7 +357,7 @@ export default function Home() {
                   {['Web Development', 'Artificial Intelligence', 'Machine Learning', 'Entrepreneurship', 'EdTech', 'Cloud & DevOps', 'Football', 'Reading', 'Films'].map((tag) => (
                     <span
                       key={tag}
-                      className="px-3.5 py-1.5 rounded-full border border-gray-200 text-xs font-semibold text-gray-600 hover:border-black hover:text-black hover:bg-gray-50 transition-all cursor-default"
+                      className="px-3 py-1.5 rounded-full border border-gray-200 text-xs font-semibold text-gray-600 hover:border-black hover:text-black hover:bg-gray-50 transition-all cursor-default"
                     >
                       {tag}
                     </span>
@@ -369,7 +365,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5 sm:p-6">
                 <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 font-bold mb-4">Currently</p>
                 <div className="space-y-3">
                   {[
@@ -418,16 +414,16 @@ export default function Home() {
 
       <Divider />
 
-      {/* ── Testimonials — no wrapper padding, section owns its own spacing ── */}
+      {/* ── Testimonials ── */}
       <Testimonials />
 
       {/* ── Services ──────────────────────────────────────────────────────── */}
       <Services />
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <section id="faq" className="py-20 sm:py-28 px-5 sm:px-8 lg:px-14 bg-white">
+      <section id="faq" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
         <div className="max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
             <div className="space-y-1.5">
               {faqs.map((faq, index) => {
@@ -443,9 +439,9 @@ export default function Home() {
                   >
                     <button
                       onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                      className="w-full flex items-center gap-4 p-4 sm:p-5 text-left"
+                      className="w-full flex items-center gap-3 sm:gap-4 p-4 sm:p-5 text-left"
                     >
-                      <span className={`text-lg font-black w-7 flex-shrink-0 ${isOpen ? 'text-white/50' : 'text-gray-300'}`}>
+                      <span className={`text-base sm:text-lg font-black w-6 sm:w-7 flex-shrink-0 ${isOpen ? 'text-white/50' : 'text-gray-300'}`}>
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <span className={`text-sm sm:text-base font-semibold flex-1 ${isOpen ? 'text-white' : 'text-black'}`}>
@@ -468,7 +464,8 @@ export default function Home() {
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="px-5 pb-5 pl-16 text-sm text-white/70 leading-relaxed">
+                          {/* Mobile: pl-5, larger screens: pl-10 or pl-16 */}
+                          <p className="px-4 sm:px-5 pb-4 sm:pb-5 pl-9 sm:pl-14 text-sm text-white/70 leading-relaxed">
                             {faq.answer}
                           </p>
                         </motion.div>
@@ -480,14 +477,14 @@ export default function Home() {
             </div>
 
             <motion.div
-              className="lg:sticky lg:top-24 space-y-6"
+              className="lg:sticky lg:top-24 space-y-5 sm:space-y-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
               <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">FAQ</p>
-              <h3 className="text-4xl md:text-5xl font-black text-black leading-tight" style={{ letterSpacing: '-0.03em' }}>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-black leading-tight" style={{ letterSpacing: '-0.03em' }}>
                 Questions you<br />
                 <span className="text-gray-300">might be wondering</span>
               </h3>
@@ -524,7 +521,7 @@ export default function Home() {
             whileHover={{ scale: 1.08 }}
           >
             <button
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.22)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.32)] transition-all border-2 border-white/15 active:scale-95"
+              className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.22)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.32)] transition-all border-2 border-white/15 active:scale-95"
               onClick={() => setIsChatOpen(true)}
               aria-label="Open chat"
             >
@@ -533,16 +530,16 @@ export default function Home() {
           </motion.div>
         ) : (
           <motion.div
-            className="fixed bottom-5 right-5 sm:bottom-9 sm:right-9 z-50 w-[calc(100vw-2.5rem)] sm:w-96 bg-[#111] rounded-3xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] overflow-hidden border border-white/10"
+            className="fixed bottom-4 right-4 sm:bottom-9 sm:right-9 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-[#111] rounded-3xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] overflow-hidden border border-white/10"
             initial={{ opacity: 0, y: 24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.94 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
           >
-            <div className="bg-gradient-to-b from-white/6 to-transparent p-5 border-b border-white/8 flex justify-between items-center">
+            <div className="bg-gradient-to-b from-white/6 to-transparent p-4 sm:p-5 border-b border-white/8 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-11 h-11 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-black shadow-lg">KJ</div>
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white flex items-center justify-center text-sm font-black text-black shadow-lg">KJ</div>
                   <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-[#111] rounded-full" />
                 </div>
                 <div>
@@ -563,7 +560,7 @@ export default function Home() {
                 <FiX className="w-4 h-4" />
               </motion.button>
             </div>
-            <div className="p-5 space-y-4">
+            <div className="p-4 sm:p-5 space-y-4">
               <div className="bg-white/6 border border-white/8 p-4 rounded-2xl">
                 <p className="text-sm text-gray-200 leading-relaxed">
                   Hey there! 👋<br />
@@ -617,10 +614,10 @@ export function Projects() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section id="work" className="bg-white text-black py-20 sm:py-28 px-5 sm:px-8 lg:px-14" style={FONT}>
+    <section id="work" className="bg-white text-black py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14" style={FONT}>
       <div className="max-w-[1600px] mx-auto">
         <motion.div
-          className="mb-14 flex items-end justify-between"
+          className="mb-10 sm:mb-14 flex items-end justify-between"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -628,7 +625,7 @@ export function Projects() {
         >
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-2">Selected Work</p>
-            <h2 className="text-6xl md:text-7xl font-black italic text-black leading-none" style={{ letterSpacing: '-0.04em' }}>WORK</h2>
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black italic text-black leading-none" style={{ letterSpacing: '-0.04em' }}>WORK</h2>
           </div>
           <span className="text-sm text-gray-400 font-medium hidden sm:block">{projects.length} projects</span>
         </motion.div>
@@ -643,40 +640,57 @@ export function Projects() {
               onHoverEnd={() => setHovered(null)}
             >
               <div
-                className="flex items-start gap-5 py-7 cursor-pointer"
+                className="flex items-start gap-3 sm:gap-5 py-6 sm:py-7 cursor-pointer"
                 onClick={() => window.open(project.demo || project.github, '_blank')}
               >
-                <span className="text-sm text-gray-300 font-mono w-8 pt-1 flex-shrink-0 group-hover:text-gray-500 transition-colors">
+                <span className="text-xs sm:text-sm text-gray-300 font-mono w-6 sm:w-8 pt-1 flex-shrink-0 group-hover:text-gray-500 transition-colors">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                    <h3 className="text-2xl md:text-4xl font-black text-black transition-all duration-300 group-hover:translate-x-1" style={{ letterSpacing: '-0.02em' }}>
+                  <div className="flex items-baseline justify-between gap-2 sm:gap-4 flex-wrap">
+                    <h3 className="text-xl sm:text-2xl md:text-4xl font-black text-black transition-all duration-300 group-hover:translate-x-1" style={{ letterSpacing: '-0.02em' }}>
                       {project.title}
                     </h3>
                     <span className="text-xs font-mono text-gray-400 tracking-widest flex-shrink-0">{project.year}</span>
                   </div>
-                  <p className="text-sm text-gray-400 mt-1.5 max-w-xl line-clamp-2 leading-relaxed">{project.description}</p>
-                  <div className="flex items-center gap-2 mt-3 flex-wrap">
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1.5 max-w-xl line-clamp-2 leading-relaxed">{project.description}</p>
+                  <div className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 flex-wrap">
                     {project.tech.map((t, ti) => (
-                      <span key={ti} className="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500 text-[11px] font-semibold tracking-wide">{t}</span>
+                      <span key={ti} className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500 text-[10px] sm:text-[11px] font-semibold tracking-wide">{t}</span>
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center gap-3 pt-1 flex-shrink-0">
-                  <motion.a href={project.github} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all" whileHover={{ scale: 1.1 }} title="GitHub">
-                    <FiGithub className="w-4 h-4" />
+                {/* Action buttons — stacked on very small screens */}
+                <div className="flex items-center gap-1.5 sm:gap-3 pt-1 flex-shrink-0">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
+                    whileHover={{ scale: 1.1 }}
+                    title="GitHub"
+                  >
+                    <FiGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </motion.a>
                   {project.demo && (
-                    <motion.a href={project.demo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all" whileHover={{ scale: 1.1 }} title="Live Demo">
-                      <FiExternalLink className="w-4 h-4" />
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => e.stopPropagation()}
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
+                      whileHover={{ scale: 1.1 }}
+                      title="Live Demo"
+                    >
+                      <FiExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </motion.a>
                   )}
                   <motion.div
-                    className="w-9 h-9 rounded-xl bg-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex"
                     animate={hovered === index ? { x: 0 } : { x: -4 }}
                   >
-                    <FiArrowUpRight className="w-4 h-4 text-white" />
+                    <FiArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                   </motion.div>
                 </div>
               </div>

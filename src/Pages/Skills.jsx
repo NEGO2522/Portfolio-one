@@ -36,44 +36,42 @@ export function Skills() {
   const duplicatedSkills = [...skills, ...skills];
 
   return (
-    <section className="w-full bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-12">
-          {/* Skills Marquee */}
-          <div className="flex-1 overflow-hidden">
-            <motion.div
-              className="flex gap-10"
-              animate={{
-                x: [0, -50 * skills.length],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 20,
-                  ease: "linear",
-                },
-              }}
-            >
-              {duplicatedSkills.map((skill, index) => (
-                <div
-                  key={`${skill.name}-${index}`}
-                  className="flex items-center justify-center w-14 h-14 hover:scale-110 transition-transform cursor-pointer group flex-shrink-0"
-                  title={skill.name}
-                >
-                  <skill.icon 
-                    className="w-9 h-9 text-gray-600 group-hover:text-black transition-colors duration-300"
-                  />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Right Side Text */}
-          <div className="flex flex-col justify-center pl-8 flex-shrink-0">
-            <p className="text-2xl font-black text-black">100+ Hours of Hands-on Experience</p>
-          </div>
+    <section className="w-full bg-white overflow-hidden py-4">
+      <div className="w-full">
+        {/* Skills Marquee — full width */}
+        <div className="overflow-hidden w-full">
+          <motion.div
+            className="flex gap-8 sm:gap-10"
+            animate={{
+              x: [0, -56 * skills.length],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration: 20,
+                ease: 'linear',
+              },
+            }}
+          >
+            {duplicatedSkills.map((skill, index) => (
+              <div
+                key={`${skill.name}-${index}`}
+                className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 hover:scale-110 transition-transform cursor-pointer group flex-shrink-0"
+                title={skill.name}
+              >
+                <skill.icon
+                  className="w-7 h-7 sm:w-9 sm:h-9 text-gray-600 group-hover:text-black transition-colors duration-300"
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Caption below marquee */}
+        <p className="text-center text-sm sm:text-base md:text-lg font-black text-black mt-3 px-4">
+          100+ Hours of Hands-on Experience
+        </p>
       </div>
     </section>
   );

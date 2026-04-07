@@ -53,13 +53,13 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="bg-white py-20 sm:py-28 px-5 sm:px-8 lg:px-14 overflow-hidden"
+      className="bg-white py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 overflow-hidden"
       style={{ fontFamily: '"Clash Display", "DM Sans", "Segoe UI", system-ui, sans-serif' }}
     >
       <div className="max-w-[1600px] mx-auto">
 
         {/* ── Header ────────────────────────────────────────────────────── */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
           <div>
             <motion.p
               className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-3"
@@ -71,7 +71,7 @@ const Testimonials = () => {
               Milestones
             </motion.p>
             <motion.h2
-              className="text-5xl sm:text-6xl md:text-7xl font-black text-black leading-none"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none"
               style={{ letterSpacing: '-0.04em' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -112,10 +112,10 @@ const Testimonials = () => {
                 onHoverEnd={() => setHovered(null)}
                 whileHover={{ y: -6, boxShadow: '0 24px 60px rgba(0,0,0,0.10)' }}
               >
-                <div className="flex flex-col flex-1 p-6">
+                <div className="flex flex-col flex-1 p-5 sm:p-6">
 
                   {/* Icon + tag row */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-100 group-hover:bg-black transition-colors duration-300">
                       <Icon className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors duration-300" />
                     </div>
@@ -143,7 +143,7 @@ const Testimonials = () => {
                   </p>
 
                   {/* Footer */}
-                  <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                  <div className="mt-5 sm:mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
                     <span className="text-xs font-mono text-gray-400 font-semibold">{item.date}</span>
                     {item.link ? (
                       <motion.a
@@ -169,15 +169,16 @@ const Testimonials = () => {
           })}
         </div>
 
-        {/* ── Decorative label strip ────────────────────────────────────── */}
+        {/* ── Decorative label strip — scrollable on mobile ─────────────── */}
         <motion.div
-          className="mt-16 flex items-center gap-6 select-none overflow-hidden"
+          className="mt-12 sm:mt-16 flex items-center gap-4 sm:gap-6 select-none overflow-x-auto pb-2 scrollbar-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
-          <div className="w-10 h-px bg-gray-200 flex-shrink-0" />
+          <div className="w-8 sm:w-10 h-px bg-gray-200 flex-shrink-0" />
           {[
             'University Recognition', '·',
             'Product Launch', '·',

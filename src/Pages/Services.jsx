@@ -45,9 +45,9 @@ export function Services() {
   const [expandedIndex, setExpandedIndex] = useState(0);
 
   return (
-    <section id="services" className="w-full bg-white px-5 sm:px-8 lg:px-14 py-6 pb-10">
+    <section id="services" className="w-full bg-white px-4 sm:px-8 lg:px-14 py-6 pb-10">
       {/* ── Dark card container ─────────────────────────────────────────── */}
-      <div className="max-w-[1600px] mx-auto bg-[#0d0d0d] rounded-[2.5rem] overflow-hidden relative">
+      <div className="max-w-[1600px] mx-auto bg-[#0d0d0d] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden relative">
 
         {/* Subtle grid texture */}
         <div
@@ -60,13 +60,13 @@ export function Services() {
         />
 
         {/* ── Header ───────────────────────────────────────────────────── */}
-        <div className="relative z-10 px-8 sm:px-14 pt-16 pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 border-b border-white/6">
+        <div className="relative z-10 px-5 sm:px-8 md:px-14 pt-12 sm:pt-16 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 sm:gap-6 border-b border-white/6">
           <div>
             <p className="text-[10px] uppercase tracking-[0.28em] text-white/30 font-semibold mb-3">
               What I offer
             </p>
             <h2
-              className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-none text-white"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white"
               style={{ letterSpacing: '-0.04em' }}
             >
               Services
@@ -85,7 +85,7 @@ export function Services() {
         </div>
 
         {/* ── Service Rows ─────────────────────────────────────────────── */}
-        <div className="relative z-10 px-8 sm:px-14 divide-y divide-white/6">
+        <div className="relative z-10 px-5 sm:px-8 md:px-14 divide-y divide-white/6">
           {services.map((service, index) => {
             const isOpen = expandedIndex === index;
             const Icon = service.icon;
@@ -94,27 +94,27 @@ export function Services() {
               <motion.div key={index} layout>
                 <button
                   onClick={() => setExpandedIndex(isOpen ? -1 : index)}
-                  className="w-full py-7 sm:py-9 flex items-start justify-between gap-6 text-left group"
+                  className="w-full py-6 sm:py-7 md:py-9 flex items-start justify-between gap-4 sm:gap-6 text-left group"
                 >
                   {/* Left block */}
-                  <div className="flex items-start gap-5 sm:gap-8 flex-1 min-w-0">
+                  <div className="flex items-start gap-4 sm:gap-5 md:gap-8 flex-1 min-w-0">
                     {/* Number + icon */}
                     <div className="flex flex-col items-center gap-2 pt-0.5 flex-shrink-0">
                       <span className="text-[11px] font-mono text-white/20 tracking-widest">{service.id}</span>
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-400 ${
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-all duration-400 ${
                           isOpen ? 'bg-white text-black' : 'bg-white/6 text-white/30 group-hover:bg-white/12 group-hover:text-white/60'
                         }`}
                       >
-                        <Icon className="w-4 h-4" />
+                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
                     </div>
 
                     {/* Title + tag + description */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-3 mb-1">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
                         <h3
-                          className={`text-xl sm:text-2xl md:text-3xl font-black tracking-tight transition-colors duration-300 ${
+                          className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-black tracking-tight transition-colors duration-300 ${
                             isOpen ? 'text-white' : 'text-white/35 group-hover:text-white/70'
                           }`}
                           style={{ letterSpacing: '-0.02em' }}
@@ -122,7 +122,7 @@ export function Services() {
                           {service.title}
                         </h3>
                         <span
-                          className={`hidden sm:inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                          className={`inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
                             isOpen ? 'bg-white/12 text-white/80' : 'bg-white/5 text-white/20'
                           }`}
                         >
@@ -139,15 +139,15 @@ export function Services() {
                             transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                             className="overflow-hidden"
                           >
-                            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl mt-3 mb-5">
+                            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl mt-3 mb-4 sm:mb-5">
                               {service.description}
                             </p>
                             {/* Highlights */}
-                            <div className="flex flex-wrap gap-2 pb-2">
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2 pb-2">
                               {service.highlights.map((h) => (
                                 <span
                                   key={h}
-                                  className="px-3 py-1 rounded-full bg-white/6 border border-white/8 text-xs text-white/50 font-medium"
+                                  className="px-2.5 sm:px-3 py-1 rounded-full bg-white/6 border border-white/8 text-xs text-white/50 font-medium"
                                 >
                                   {h}
                                 </span>
@@ -163,7 +163,7 @@ export function Services() {
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.25 }}
-                    className={`flex-shrink-0 mt-1 w-8 h-8 rounded-full border flex items-center justify-center text-lg font-light transition-colors duration-300 ${
+                    className={`flex-shrink-0 mt-1 w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center text-lg font-light transition-colors duration-300 ${
                       isOpen ? 'border-white text-white' : 'border-white/12 text-white/20 group-hover:border-white/30 group-hover:text-white/50'
                     }`}
                   >
@@ -176,14 +176,14 @@ export function Services() {
         </div>
 
         {/* ── Footer CTA inside card ────────────────────────────────────── */}
-        <div className="relative z-10 px-8 sm:px-14 py-12 border-t border-white/6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="relative z-10 px-5 sm:px-8 md:px-14 py-10 sm:py-12 border-t border-white/6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
           <div>
             <p className="text-sm text-white/30 mb-1 font-medium">Ready to start?</p>
-            <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Let's build something great.</p>
+            <p className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight">Let's build something great.</p>
           </div>
           <motion.a
             href="mailto:draft.kshitij@gmail.com"
-            className="group inline-flex items-center gap-2.5 bg-white text-black px-7 py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
+            className="group inline-flex items-center gap-2.5 bg-white text-black px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
