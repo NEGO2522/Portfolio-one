@@ -58,7 +58,7 @@ export default function Navbar() {
 
           {/* ── Main bar ── */}
           <div
-            className={`relative z-30 flex items-center justify-between px-4 md:px-10 py-2.5 md:py-4 shadow-xl bg-[#D8D8D8]/95 backdrop-blur-md transition-all duration-500 ${`
+            className={`relative z-30 flex items-center justify-between px-4 md:px-10 py-2.5 md:py-4 shadow-xl bg-[#D8D8D8]/95 backdrop-blur-md transition-all duration-500 ${
               dropdownOpen ? 'rounded-b-none' : 'rounded-b-3xl'
             }`}
           >
