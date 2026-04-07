@@ -1,111 +1,200 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowUpRight, FiAward, FiZap, FiTrendingUp, FiStar } from 'react-icons/fi';
+
+const achievements = [
+  {
+    id: '01',
+    icon: FiAward,
+    tag: 'Recognition',
+    title: 'University Recognition',
+    subtitle: 'Appreciation Letter · Poornima University',
+    description:
+      'Received an official appreciation letter for building and deploying a live Mess Menu website actively used by students on campus.',
+    date: '2024',
+    link: { text: 'View Live Project', url: 'https://poornima-mess.vercel.app' },
+  },
+  {
+    id: '02',
+    icon: FiZap,
+    tag: 'Launch',
+    title: 'Live Product Launch',
+    subtitle: 'Production-Ready Web App',
+    description:
+      'Designed and deployed a full-stack web application serving real users with high reliability and a polished experience.',
+    date: 'July 2025',
+    link: { text: 'Visit Lathishop', url: 'https://lathishop.com' },
+  },
+  {
+    id: '03',
+    icon: FiTrendingUp,
+    tag: 'Award',
+    title: 'Pitching Event Winner',
+    subtitle: 'Shark Tank · 3rd Runner Up',
+    description:
+      'Secured 3rd Runner Up at a competitive pitching event for presenting STED — an EdTech solution for practical skill-based learning.',
+    date: 'November 2025',
+  },
+  {
+    id: '04',
+    icon: FiStar,
+    tag: 'Ongoing',
+    title: 'Tech Journey',
+    subtitle: 'Self-driven Builder',
+    description:
+      'Continuously expanding expertise through hands-on projects in web development, data science, and AI to solve real-world challenges.',
+    date: 'Ongoing',
+  },
+];
 
 const Testimonials = () => {
-  const achievements = [
-    {
-      title: "University Recognition",
-      subtitle: "Appreciation Letter from Poornima University",
-      description: "Received an appreciation letter for building and deploying a live Mess Menu website used by students.",
-      date: "2024",
-      link: {
-        text: "View Live Project",
-        url: "https://poornima-mess.vercel.app"
-      }
-    },
-    {
-      title: "Live Product Launch",
-      subtitle: "Production-Ready Web Application",
-      description: "Successfully designed and deployed a full-stack web application currently serving real users with high reliability.",
-      date: "July 2025",
-      link: {
-        text: "Visit Lathishop",
-        url: "https://lathishop.com"
-      }
-    },
-    {
-      title: "Pitching Event Winner",
-      subtitle: "Shark Tank Event – 3rd Runner Up",
-      description: "Secured 3rd Runner Up position for presenting STED, an EdTech solution focused on practical skill-based learning.",
-      date: "November 2025"
-    },
-    {
-      title: "Tech Journey",
-      subtitle: "Self-driven Tech Builder",
-      description: "Continuously expanding expertise through hands-on projects in web development, data science, and AI, with a strong focus on solving real-world challenges.",
-      date: "Ongoing",
-      isLast: true
-    }
-  ];
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="bg-white text-black py-4 sm:py-6 px-2 sm:px-6 lg:px-8" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
-      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6">
-        {/* Section Header */}
-        <motion.div 
-          className="mb-8 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section
+      id="testimonials"
+      className="bg-white py-20 sm:py-28 px-5 sm:px-8 lg:px-14 overflow-hidden"
+      style={{ fontFamily: '"Clash Display", "DM Sans", "Segoe UI", system-ui, sans-serif' }}
+    >
+      <div className="max-w-[1600px] mx-auto">
+
+        {/* ── Header ────────────────────────────────────────────────────── */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
+          <div>
+            <motion.p
+              className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-3"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              Milestones
+            </motion.p>
+            <motion.h2
+              className="text-5xl sm:text-6xl md:text-7xl font-black text-black leading-none"
+              style={{ letterSpacing: '-0.04em' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.05 }}
+            >
+              Achievements
+              <br />
+              <span className="text-gray-300">&amp; recognition</span>
+            </motion.h2>
+          </div>
+
+          <motion.div
+            className="flex items-center gap-2 self-start sm:self-auto px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-xs text-gray-500 font-semibold tracking-wide flex-shrink-0"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
+            {achievements.length} milestones
+          </motion.div>
+        </div>
+
+        {/* ── 4-column card grid ────────────────────────────────────────── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {achievements.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.id}
+                className="group relative flex flex-col rounded-3xl border border-gray-100 bg-white overflow-hidden cursor-default"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.1 }}
+                onHoverStart={() => setHovered(index)}
+                onHoverEnd={() => setHovered(null)}
+                whileHover={{ y: -6, boxShadow: '0 24px 60px rgba(0,0,0,0.10)' }}
+              >
+                <div className="flex flex-col flex-1 p-6">
+
+                  {/* Icon + tag row */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-100 group-hover:bg-black transition-colors duration-300">
+                      <Icon className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400 border border-gray-200 rounded-full px-2.5 py-1">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  {/* ID */}
+                  <span className="text-[11px] font-mono text-gray-300 font-bold mb-2">{item.id}</span>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-black text-black leading-snug mb-1" style={{ letterSpacing: '-0.01em' }}>
+                    {item.title}
+                  </h3>
+
+                  {/* Subtitle */}
+                  <p className="text-xs text-gray-400 font-semibold mb-4 tracking-wide">
+                    {item.subtitle}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-500 leading-relaxed flex-1">
+                    {item.description}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <span className="text-xs font-mono text-gray-400 font-semibold">{item.date}</span>
+                    {item.link ? (
+                      <motion.a
+                        href={item.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-black hover:text-gray-500 transition-colors"
+                        whileHover={{ x: 2 }}
+                      >
+                        {item.link.text}
+                        <FiArrowUpRight className="w-3.5 h-3.5" />
+                      </motion.a>
+                    ) : (
+                      <span className="text-xs font-bold text-gray-300">In progress</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Subtle hover overlay */}
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.015] transition-opacity duration-300 pointer-events-none" />
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* ── Decorative label strip ────────────────────────────────────── */}
+        <motion.div
+          className="mt-16 flex items-center gap-6 select-none overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ delay: 0.5 }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold italic tracking-tight text-black/20 mb-4">
-            TESTIMONIALS
-          </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-transparent mx-auto mt-4" style={{ background: 'linear-gradient(to right, #9ca3af, transparent)' }}></div>
+          <div className="w-10 h-px bg-gray-200 flex-shrink-0" />
+          {[
+            'University Recognition', '·',
+            'Product Launch', '·',
+            'Shark Tank Runner-Up', '·',
+            'Self-taught Builder',
+          ].map((t, i) => (
+            <span
+              key={i}
+              className="text-[11px] uppercase tracking-widest text-gray-300 font-bold whitespace-nowrap flex-shrink-0"
+            >
+              {t}
+            </span>
+          ))}
         </motion.div>
 
-        {/* Horizontal Timeline */}
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-          
-          <div className="flex flex-nowrap gap-4 sm:gap-8 pb-16 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory -mx-2 sm:mx-auto sm:justify-center">
-          {achievements.map((achievement, index) => (
-            <motion.div 
-              key={index}
-              className="relative flex-shrink-0 w-[calc(100vw-2rem)] sm:w-80 snap-center sm:snap-none mx-1 sm:mx-0"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 -top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-gray-800 to-gray-400 flex items-center justify-center z-10">
-                <div className="w-3 h-3 rounded-full bg-black"></div>
-              </div>
-              
-              {/* Content */}
-              <div className="w-full">
-                <div className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200 transition-all duration-300 h-full min-h-[260px] sm:min-h-[300px] flex flex-col">
-                  <div className="text-sm text-black/50 mb-3">{achievement.date}</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-black mb-1 sm:mb-2">{achievement.title}</h3>
-                  <h4 className="text-black/60 text-xs sm:text-sm font-medium mb-2 sm:mb-3">{achievement.subtitle}</h4>
-                  <p className="text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4 flex-grow">
-                    {achievement.description}
-                  </p>
-                  
-                  {achievement.link && (
-                    <a 
-                      href={achievement.link.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 font-medium mt-auto self-start"
-                    >
-                      {achievement.link.text}
-                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          </div>
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

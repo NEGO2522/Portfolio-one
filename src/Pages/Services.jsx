@@ -1,125 +1,195 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiPlus, FiMinus, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiMonitor, FiTrendingUp, FiLayout, FiZap } from "react-icons/fi";
+
+const services = [
+  {
+    id: "01",
+    title: "Brand Development & Identity",
+    tag: "Branding",
+    icon: FiLayout,
+    description:
+      "Creating compelling brand identities and visual systems that resonate with your target audience and set you apart from competition. From logo to full design system.",
+    highlights: ["Logo & Visual Identity", "Design Systems", "Brand Guidelines", "Color & Typography"],
+  },
+  {
+    id: "02",
+    title: "Digital Strategy & Consulting",
+    tag: "Strategy",
+    icon: FiTrendingUp,
+    description:
+      "Strategic planning and consulting to help businesses leverage technology effectively and achieve their digital transformation goals with measurable results.",
+    highlights: ["Tech Audits", "Roadmapping", "Growth Strategy", "Performance Reviews"],
+  },
+  {
+    id: "03",
+    title: "Custom Online Business Platforms",
+    tag: "Development",
+    icon: FiZap,
+    description:
+      "Tailored web applications that help your business run smoothly — customer portals, booking systems, internal tools that automate workflows and boost productivity.",
+    highlights: ["Web Apps", "Admin Dashboards", "Automation Tools", "API Integrations"],
+  },
+  {
+    id: "04",
+    title: "High-Converting Business Websites",
+    tag: "Web Design",
+    icon: FiMonitor,
+    description:
+      "Strategic design meets high performance. Websites focused on turning visitors into customers through optimized user flows, fast load times, and clean aesthetics.",
+    highlights: ["Landing Pages", "Portfolio Sites", "SEO Optimization", "Mobile-First"],
+  },
+];
 
 export function Services() {
   const [expandedIndex, setExpandedIndex] = useState(0);
 
-  const services = [
-    {
-      id: "(1)",
-      title: "Brand Development & Identity",
-      description: "Creating compelling brand identities and visual systems that resonate with your target audience and set you apart from the competition.",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: "(2)",
-      title: "Digital Strategy & Consulting",
-      description: "Strategic planning and consulting to help businesses leverage technology effectively and achieve their digital transformation goals.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: "(3)",
-      title: "Custom Online Business Platforms",
-      description: "I build tailored web applications that help your business run smoothly—from customer portals and booking systems to internal tools that automate your workflows and boost productivity.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: "(4)",
-      title: "High-Converting Business Websites",
-      description: "Strategic design meets high performance. I create websites focused on turning visitors into customers through optimized user flows.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    }
-  ];
-
   return (
-    <section id="services" className="w-full bg-white px-2.5 py-20 flex flex-col items-center overflow-hidden">
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');`}</style>
-      
-      <div className="max-w-[1600px] w-full mx-auto bg-black rounded-[3rem] pt-32 pb-32 px-10 md:px-24 shadow-2xl relative overflow-visible">
-        
-        {/* Background "Services" Text - Reduced size and width */}
-        <div className="absolute top-[-20px] md:top-[-10px] left-0 right-0 flex justify-start md:justify-center pointer-events-none select-none z-0 pl-10 md:pl-0">
-          <h1 className="text-[120px] md:text-[200px] font-extrabold tracking-[-0.05em] leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/5 to-white/10 inline-block uppercase" style={{ fontFamily: 'Syne, sans-serif' }}>
-            Services
-          </h1>
+    <section id="services" className="w-full bg-white px-5 sm:px-8 lg:px-14 py-6 pb-10">
+      {/* ── Dark card container ─────────────────────────────────────────── */}
+      <div className="max-w-[1600px] mx-auto bg-[#0d0d0d] rounded-[2.5rem] overflow-hidden relative">
+
+        {/* Subtle grid texture */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+          }}
+        />
+
+        {/* ── Header ───────────────────────────────────────────────────── */}
+        <div className="relative z-10 px-8 sm:px-14 pt-16 pb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 border-b border-white/6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.28em] text-white/30 font-semibold mb-3">
+              What I offer
+            </p>
+            <h2
+              className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-none text-white"
+              style={{ letterSpacing: '-0.04em' }}
+            >
+              Services
+            </h2>
+          </div>
+
+          <motion.a
+            href="#contact"
+            className="group self-start sm:self-auto inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-white/70 hover:text-white hover:border-white text-sm font-semibold rounded-full transition-all"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Work with me
+            <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </motion.a>
         </div>
 
-        {/* Services List Content */}
-        <div className="relative z-10 mt-10 md:mt-20">
+        {/* ── Service Rows ─────────────────────────────────────────────── */}
+        <div className="relative z-10 px-8 sm:px-14 divide-y divide-white/6">
           {services.map((service, index) => {
             const isOpen = expandedIndex === index;
-            
+            const Icon = service.icon;
+
             return (
-              <div key={index} className="border-b border-white/10 last:border-none">
+              <motion.div key={index} layout>
                 <button
                   onClick={() => setExpandedIndex(isOpen ? -1 : index)}
-                  className="w-full py-6 md:py-10 flex items-start justify-between group transition-all"
+                  className="w-full py-7 sm:py-9 flex items-start justify-between gap-6 text-left group"
                 >
-                  <div className="flex items-start gap-8 md:gap-24 lg:gap-40 text-left">
-                    <span className="text-xs font-mono text-white/40 pt-2.5 tracking-widest">
-                      {service.id}
-                    </span>
-                    
-                    <div className="flex flex-col gap-6">
-                      <div className="flex flex-col xl:flex-row xl:items-center gap-8">
-                        {isOpen && (
-                          <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            className="w-40 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-white/10 shadow-xl"
-                          >
-                            <img 
-                              src={service.image} 
-                              className="w-full h-full object-cover grayscale brightness-110"
-                              alt=""
-                            />
-                          </motion.div>
-                        )}
-                        <h3 
-                          className={`text-xl md:text-2xl lg:text-3xl font-bold tracking-tight transition-all duration-500 ease-out ${isOpen ? 'text-white' : 'text-white/30 group-hover:text-white'}`}
-                          style={{ fontFamily: 'Syne, sans-serif' }}
+                  {/* Left block */}
+                  <div className="flex items-start gap-5 sm:gap-8 flex-1 min-w-0">
+                    {/* Number + icon */}
+                    <div className="flex flex-col items-center gap-2 pt-0.5 flex-shrink-0">
+                      <span className="text-[11px] font-mono text-white/20 tracking-widest">{service.id}</span>
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-400 ${
+                          isOpen ? 'bg-white text-black' : 'bg-white/6 text-white/30 group-hover:bg-white/12 group-hover:text-white/60'
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    {/* Title + tag + description */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-3 mb-1">
+                        <h3
+                          className={`text-xl sm:text-2xl md:text-3xl font-black tracking-tight transition-colors duration-300 ${
+                            isOpen ? 'text-white' : 'text-white/35 group-hover:text-white/70'
+                          }`}
+                          style={{ letterSpacing: '-0.02em' }}
                         >
                           {service.title}
                         </h3>
+                        <span
+                          className={`hidden sm:inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                            isOpen ? 'bg-white/12 text-white/80' : 'bg-white/5 text-white/20'
+                          }`}
+                        >
+                          {service.tag}
+                        </span>
                       </div>
 
                       <AnimatePresence>
                         {isOpen && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
+                            animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                             className="overflow-hidden"
                           >
-                            <p className="text-white/50 text-sm md:text-lg leading-relaxed max-w-2xl pb-6">
+                            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl mt-3 mb-5">
                               {service.description}
                             </p>
+                            {/* Highlights */}
+                            <div className="flex flex-wrap gap-2 pb-2">
+                              {service.highlights.map((h) => (
+                                <span
+                                  key={h}
+                                  className="px-3 py-1 rounded-full bg-white/6 border border-white/8 text-xs text-white/50 font-medium"
+                                >
+                                  {h}
+                                </span>
+                              ))}
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
                   </div>
-                  
-                  <div className={`flex-shrink-0 mt-2 p-1.5 rounded-full border transition-all duration-500 ${isOpen ? 'border-white text-white' : 'border-white/10 text-white/20 group-hover:border-white group-hover:text-white'}`}>
-                    {isOpen ? <FiMinus size={20} /> : <FiPlus size={20} />}
-                  </div>
+
+                  {/* Toggle indicator */}
+                  <motion.div
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className={`flex-shrink-0 mt-1 w-8 h-8 rounded-full border flex items-center justify-center text-lg font-light transition-colors duration-300 ${
+                      isOpen ? 'border-white text-white' : 'border-white/12 text-white/20 group-hover:border-white/30 group-hover:text-white/50'
+                    }`}
+                  >
+                    +
+                  </motion.div>
                 </button>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Action Button - Shifted Left */}
-        <div className="mt-20 flex justify-start relative z-10 md:ml-32 lg:ml-48">
-            <button 
-                className="group relative flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-xl active:scale-95 uppercase tracking-widest"
-                style={{ fontFamily: 'Syne, sans-serif' }}
-            >
-                Contact Me
-                <FiArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-            </button>
+        {/* ── Footer CTA inside card ────────────────────────────────────── */}
+        <div className="relative z-10 px-8 sm:px-14 py-12 border-t border-white/6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div>
+            <p className="text-sm text-white/30 mb-1 font-medium">Ready to start?</p>
+            <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Let's build something great.</p>
+          </div>
+          <motion.a
+            href="mailto:draft.kshitij@gmail.com"
+            className="group inline-flex items-center gap-2.5 bg-white text-black px-7 py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Get in touch
+            <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </motion.a>
         </div>
       </div>
     </section>
