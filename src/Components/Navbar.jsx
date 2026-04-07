@@ -1,7 +1,6 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiGithub, FiLinkedin, FiChevronDown, FiTwitter, FiMail } from 'react-icons/fi';
-import { FaDiscord } from 'react-icons/fa';
+import { FiMenu, FiX, FiChevronDown, FiMail, FiArrowUpRight } from 'react-icons/fi';
 import { useState } from 'react';
 import NavbarImage from '../assets/Navbar_Image.png';
 
@@ -33,11 +32,17 @@ export default function Navbar() {
   ];
 
   const dropdownNav = [
-    { n: '01', label: 'Home',       id: 'hero' },
-    { n: '02', label: 'About',      id: 'about' },
-    { n: '03', label: 'Work',       id: 'work' },
-    { n: '04', label: 'Services',   id: 'services' },
-    { n: '05', label: 'Connect',    id: 'contact' },
+    { n: '01', label: 'Home',     id: 'hero' },
+    { n: '02', label: 'About',    id: 'about' },
+    { n: '03', label: 'Work',     id: 'work' },
+    { n: '04', label: 'Services', id: 'services' },
+    { n: '05', label: 'Connect',  id: 'contact' },
+  ];
+
+  const socials = [
+    { label: 'GitHub',   href: 'https://github.com/NEGO2522' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kshitij-kj-jain-422025342/' },
+    { label: 'Twitter',  href: 'https://twitter.com' },
   ];
 
   return (
@@ -50,7 +55,8 @@ export default function Navbar() {
         style={{ fontFamily: 'system-ui, sans-serif' }}
       >
         <div className="w-full relative px-4 md:px-10">
-          {/* ── Main bar ──────────────────────────────────────────────── */}
+
+          {/* ── Main bar ── */}
           <div
             className={`relative z-30 flex items-center justify-between px-6 md:px-10 py-4 shadow-xl bg-[#D8D8D8]/95 backdrop-blur-md transition-all duration-500 ${
               dropdownOpen ? 'rounded-b-none' : 'rounded-b-3xl'
@@ -112,7 +118,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* ── Desktop dropdown ──────────────────────────────────────── */}
+          {/* ── Desktop dropdown — LIGHT REDESIGN ── */}
           <AnimatePresence>
             {dropdownOpen && (
               <motion.div
@@ -120,67 +126,89 @@ export default function Navbar() {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="overflow-hidden bg-[#D8D8D8]/95 backdrop-blur-md border-t border-gray-400/20 shadow-2xl rounded-b-[3rem] origin-top"
+                className="overflow-hidden rounded-b-[3rem] origin-top shadow-2xl"
+                style={{ background: 'linear-gradient(135deg, #f9f9f7 0%, #efefec 100%)' }}
               >
-                <div className="px-10 py-12 grid grid-cols-1 md:grid-cols-2 gap-10">
-                  {/* Left — nav items */}
-                  <nav className="flex flex-col gap-3">
+                <div className="px-10 py-12 grid grid-cols-1 md:grid-cols-5 gap-10">
+
+                  {/* Left — nav items (3 cols) */}
+                  <nav className="md:col-span-3 flex flex-col gap-1">
                     {dropdownNav.map((item, i) => (
                       <div key={i}>
                         <motion.button
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.05 + 0.15 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.06 + 0.1 }}
                           onClick={() => scrollToSection(item.id)}
-                          className="group flex items-center gap-4 w-fit cursor-pointer"
+                          className="group flex items-center gap-4 w-full cursor-pointer py-2 px-3 rounded-2xl hover:bg-black/5 transition-colors duration-200"
                         >
-                          <span className="text-gray-400 font-bold text-[10px] font-mono">{item.n}</span>
-                          <span className="text-2xl md:text-3xl font-black tracking-tight text-gray-800 group-hover:translate-x-2 transition-transform duration-300">
+                          <span className="text-gray-300 font-mono text-[10px] font-bold w-6 shrink-0">{item.n}</span>
+                          <span className="text-3xl md:text-4xl font-black tracking-tight text-gray-800 group-hover:text-black transition-colors duration-200">
                             {item.label}
                           </span>
+                          <FiArrowUpRight className="ml-auto text-gray-300 group-hover:text-gray-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 w-5 h-5 shrink-0" />
                         </motion.button>
                         {i < dropdownNav.length - 1 && (
-                          <div className="border-b border-gray-400/40 my-3" />
+                          <div className="border-b border-gray-200 mx-3" />
                         )}
                       </div>
                     ))}
                   </nav>
 
-                  {/* Right — image + email */}
-                  <div className="hidden md:flex flex-col justify-between">
-                    <img
-                      src={NavbarImage}
-                      alt="Kshitij"
-                      className="w-full h-56 object-cover object-top rounded-2xl"
-                    />
-                    <div className="mt-6">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-2">Say hello</p>
-                      <a
-                        href="mailto:nextgenova28@gmail.com"
-                        className="text-lg font-bold text-gray-700 hover:text-black transition-colors"
-                      >
-                        nextgenova28@gmail.com
-                      </a>
+                  {/* Right — image + contact (2 cols) */}
+                  <div className="hidden md:flex md:col-span-2 flex-col gap-6">
+                    {/* Image card */}
+                    <div className="relative overflow-hidden rounded-2xl shadow-md flex-1">
+                      <img
+                        src={NavbarImage}
+                        alt="Kshitij"
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </div>
+
+                    {/* Email card */}
+                    <div className="bg-white rounded-2xl px-5 py-4 shadow-sm border border-gray-100 flex items-center justify-between group hover:shadow-md transition-shadow">
+                      <div>
+                        <p className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-semibold mb-1">Say hello</p>
+                        <a
+                          href="mailto:nextgenova28@gmail.com"
+                          className="text-sm font-bold text-gray-700 hover:text-black transition-colors"
+                        >
+                          nextgenova28@gmail.com
+                        </a>
+                      </div>
+                      <div className="bg-gray-100 group-hover:bg-black group-hover:text-white text-gray-400 rounded-full p-2 transition-colors duration-300">
+                        <FiArrowUpRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom strip */}
-                <div className="bg-black/6 py-3 px-10 flex justify-between items-center text-[9px] uppercase tracking-[0.2em] text-gray-500">
-                  <span className="font-bold">Kshitij Jain · 2025</span>
+                <div className="border-t border-gray-200 py-4 px-10 flex justify-between items-center bg-white/40">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">Kshitij Jain · 2025</span>
                   <div className="flex items-center gap-5">
-                    <a href="https://github.com/NEGO2522" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors font-semibold">GitHub</a>
-                    <span className="border-l border-gray-400/40 h-3" />
-                    <a href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors font-semibold">LinkedIn</a>
-                    <span className="border-l border-gray-400/40 h-3" />
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors font-semibold">Twitter</a>
+                    {socials.map((s, i) => (
+                      <span key={i} className="flex items-center gap-5">
+                        {i !== 0 && <span className="border-l border-gray-300 h-3" />}
+                        <a
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-black transition-colors font-semibold"
+                        >
+                          {s.label}
+                        </a>
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* ── Mobile menu ───────────────────────────────────────────── */}
+          {/* ── Mobile menu ── */}
           <AnimatePresence>
             {mobileMenuOpen && (
               <motion.div
@@ -188,7 +216,8 @@ export default function Navbar() {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="md:hidden overflow-hidden bg-[#D8D8D8]/95 backdrop-blur-md border-t border-gray-400/20 rounded-b-3xl shadow-2xl"
+                className="md:hidden overflow-hidden rounded-b-3xl shadow-2xl"
+                style={{ background: 'linear-gradient(135deg, #f9f9f7 0%, #efefec 100%)' }}
               >
                 <div className="px-6 py-8 flex flex-col gap-1">
                   {dropdownNav.map((item, i) => (
@@ -198,16 +227,17 @@ export default function Navbar() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => scrollToSection(item.id)}
-                        className="group flex items-center gap-3 w-full py-2 cursor-pointer"
+                        className="group flex items-center gap-3 w-full py-2 px-2 rounded-xl hover:bg-black/5 transition-colors cursor-pointer"
                       >
-                        <span className="text-gray-400 text-[10px] font-mono font-bold">{item.n}</span>
-                        <span className="text-xl font-black text-gray-800 group-hover:translate-x-1 transition-transform">{item.label}</span>
+                        <span className="text-gray-300 text-[10px] font-mono font-bold">{item.n}</span>
+                        <span className="text-xl font-black text-gray-800 group-hover:text-black transition-colors">{item.label}</span>
+                        <FiArrowUpRight className="ml-auto text-gray-300 group-hover:text-gray-500 w-4 h-4 transition-colors" />
                       </motion.button>
-                      {i < dropdownNav.length - 1 && <div className="border-b border-gray-400/30 my-1" />}
+                      {i < dropdownNav.length - 1 && <div className="border-b border-gray-200 mx-2 my-1" />}
                     </div>
                   ))}
-                  <div className="mt-6 pt-4 border-t border-gray-400/30">
-                    <a href="mailto:nextgenova28@gmail.com" className="text-sm font-semibold text-gray-600 hover:text-black transition-colors flex items-center gap-2">
+                  <div className="mt-6 pt-4 border-t border-gray-200">
+                    <a href="mailto:nextgenova28@gmail.com" className="text-sm font-semibold text-gray-500 hover:text-black transition-colors flex items-center gap-2">
                       <FiMail className="w-4 h-4" />
                       nextgenova28@gmail.com
                     </a>
@@ -216,6 +246,7 @@ export default function Navbar() {
               </motion.div>
             )}
           </AnimatePresence>
+
         </div>
       </motion.nav>
     </div>
