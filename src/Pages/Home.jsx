@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiGithub, FiLinkedin, FiMail,
   FiMapPin, FiMessageCircle, FiX, FiCode,
-  FiExternalLink, FiTwitter, FiArrowUpRight
+  FiExternalLink, FiTwitter, FiArrowUpRight, FiPhone, FiGlobe, FiUsers, FiArrowUp
 } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
 import profileImage from '../assets/img.png';
@@ -38,19 +38,6 @@ function AnimatedLogo() {
   );
 }
 
-/* ─── ProfileImage ──────────────────────────────────────────────────────── */
-function ProfileImage() {
-  return (
-    <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.18)] border-[6px] sm:border-[10px] border-white bg-gray-100 max-w-7xl mx-auto">
-      <img
-        src={profileImage}
-        alt="Kshitij"
-        className="w-full h-auto object-cover brightness-[0.97] contrast-[1.02]"
-      />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-    </div>
-  );
-}
 
 /* ─── SocialPill ─────────────────────────────────────────────────────────── */
 function SocialPill({ href, icon: Icon, label }) {
@@ -86,6 +73,19 @@ function Divider() {
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const faqs = [
     {
@@ -122,7 +122,7 @@ export default function Home() {
     <div className="text-black overflow-x-hidden bg-white" style={FONT}>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="min-h-[60vh] sm:min-h-[88vh] flex flex-col justify-center relative overflow-hidden bg-white">
+      <section id="hero" className="min-h-[60vh] sm:min-h-[88vh] flex flex-col justify-center relative overflow-hidden bg-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{
@@ -134,7 +134,7 @@ export default function Home() {
         <AnimatedLogo />
 
         <motion.div
-          className="absolute top-7 right-7 z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 border border-black/10 text-[10px] sm:text-xs font-semibold text-gray-600 tracking-wide"
+          className="absolute top-20 sm:top-7 right-5 sm:right-7 z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 border border-black/10 text-[10px] sm:text-xs font-semibold text-gray-600 tracking-wide"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -168,7 +168,7 @@ export default function Home() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black text-white text-xs font-bold tracking-widest uppercase">
                 <FiCode className="w-3.5 h-3.5" />
-                Fullstack &amp; AI Developer
+                Full Stack Developer &amp; ML Enthusiast
               </div>
               <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium max-w-xs">
                 Designing and building digital products that balance user needs with real-world problems.
@@ -180,7 +180,9 @@ export default function Home() {
                 <span className="underline underline-offset-2 text-gray-600">Cloud</span> solutions.
               </p>
               <motion.a
-                href="#contact"
+                href="https://www.linkedin.com/in/kshitijjain-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-bold tracking-wide hover:bg-gray-800 transition-colors"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
@@ -205,26 +207,17 @@ export default function Home() {
         <Skills />
       </section>
 
-      {/* ── Profile Image ─────────────────────────────────────────────────── */}
-      <div className="w-full px-4 sm:px-8 lg:px-14 -mt-16">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <ProfileImage />
-        </motion.div>
-      </div>
 
       {/* ── Social Media Row ───────────────────────────────────────────────── */}
-      <div className="w-full px-4 sm:px-8 lg:px-14 py-8 sm:py-10">
-        <div className="grid grid-cols-5 gap-2 sm:gap-3 sm:gap-4 w-full">
-          <SocialPill href="https://discord.com" icon={FaDiscord} label="Discord" />
-          <SocialPill href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/" icon={FiLinkedin} label="LinkedIn" />
+      <div className="w-full px-4 sm:px-8 lg:px-14 pb-8 sm:pb-10 pt-2 sm:pt-4 -mt-2 sm:-mt-4">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2 sm:gap-3 sm:gap-4 w-full">
+          <SocialPill href="tel:+919413973399" icon={FiPhone} label="Phone" />
+          <SocialPill href="mailto:borbreak@gmail.com" icon={FiMail} label="Email" />
+          <SocialPill href="https://www.linkedin.com/in/kshitijjain-dev/" icon={FiLinkedin} label="LinkedIn" />
           <SocialPill href="https://github.com/NEGO2522" icon={FiGithub} label="GitHub" />
-          <SocialPill href="https://twitter.com" icon={FiTwitter} label="Twitter" />
-          <SocialPill href="mailto:nextgenova28@gmail.com" icon={FiMail} label="Email" />
+          <SocialPill href="https://github.com/the-solvers" icon={FiUsers} label="Organization" />
+          <SocialPill href="https://x.com/k_shit_jain" icon={FiTwitter} label="Twitter" />
+          <SocialPill href="https://thesolvers.online" icon={FiGlobe} label="Website" />
         </div>
       </div>
 
@@ -335,7 +328,7 @@ export default function Home() {
             >
               <div className="space-y-4 sm:space-y-5 text-gray-500 text-base sm:text-lg leading-relaxed">
                 <p>
-                  Hey, I'm <span className="font-bold text-black">Kshitij Jain</span> — a 2nd-year B.Tech
+                  Hey, I'm <span className="font-bold text-black">Kshitij Jain</span> — a 3rd-year B.Tech
                   student in Computer Science (AI & ML) at Poornima University. I build things for the web
                   and love the intersection of design, code, and real-world impact.
                 </p>
@@ -369,7 +362,7 @@ export default function Home() {
                 <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 font-bold mb-4">Currently</p>
                 <div className="space-y-3">
                   {[
-                    { dot: '#10b981', text: '2nd Year — B.Tech CS (AI & ML), Poornima University' },
+                    { dot: '#10b981', text: '3rd Year — B.Tech CS (AI & ML), Poornima University' },
                     { dot: '#3b82f6', text: 'Building an EdTech platform for students' },
                     { dot: '#8b5cf6', text: 'Experimenting with custom AI models' },
                     { dot: '#f59e0b', text: 'Open to freelance & full-time roles' },
@@ -387,7 +380,7 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-3 pt-1">
                 <motion.a
-                  href="mailto:draft.kshitij@gmail.com"
+                  href="tel:+919413973399"
                   className="group inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-bold tracking-wide hover:bg-gray-800 transition-colors"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
@@ -396,7 +389,7 @@ export default function Home() {
                   <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </motion.a>
                 <motion.a
-                  href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
+                  href="https://www.linkedin.com/in/kshitijjain-dev/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 border border-gray-200 text-gray-600 hover:border-black hover:text-black px-6 py-3 rounded-full text-sm font-bold transition-all"
@@ -492,7 +485,9 @@ export default function Home() {
                 Got questions? I've got answers. Here's everything you need to know about working with me.
               </p>
               <motion.a
-                href="#contact"
+                href="https://www.linkedin.com/in/kshitijjain-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
@@ -510,6 +505,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Scroll to Top Button ──────────────────────────────────────────── */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.div
+            className="fixed bottom-6 left-6 sm:bottom-10 sm:left-10 z-[45]"
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 200 } }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <button
+              onClick={scrollToTop}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.22)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.32)] transition-all border-2 border-white/15 active:scale-95"
+              aria-label="Scroll to top"
+            >
+              <FiArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── Chat Widget ───────────────────────────────────────────────────── */}
       <AnimatePresence>
         {!isChatOpen ? (
@@ -521,11 +537,11 @@ export default function Home() {
             whileHover={{ scale: 1.08 }}
           >
             <button
-              className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.22)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.32)] transition-all border-2 border-white/15 active:scale-95"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.22)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.32)] transition-all border-2 border-white/15 active:scale-95"
               onClick={() => setIsChatOpen(true)}
               aria-label="Open chat"
             >
-              <FiMessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+              <FiMessageCircle className="w-5 h-5 sm:w-7 sm:h-7" />
             </button>
           </motion.div>
         ) : (
@@ -571,7 +587,7 @@ export default function Home() {
                 </div>
               </div>
               <a
-                href="https://www.linkedin.com/in/kshitij-kj-jain-422025342/"
+                href="https://www.linkedin.com/in/kshitijjain-dev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2.5 bg-white text-black hover:bg-gray-100 py-3.5 px-4 rounded-2xl font-bold text-sm transition-all shadow-lg active:scale-95"
@@ -592,12 +608,12 @@ export default function Home() {
 
 /* ─── Projects Data ──────────────────────────────────────────────────────── */
 const projects = [
-  { title: 'LATTHI', description: 'A fully functional E-Commerce Website built with a seamless, modern shopping experience and AI-powered features.', tech: ['ReactJs', 'Tailwind CSS', 'Firebase', 'AI Tools'], github: 'https://github.com/NEGO2522/CentralizedAI', demo: 'https://project-latthi.vercel.app/', year: '2024' },
-  { title: 'College Mess App', description: 'Responsive web app to manage daily menus and meal schedules for college students with clean UI/UX and real-time updates.', tech: ['React.js', 'Tailwind CSS', 'Responsive Design', 'UI/UX'], github: 'https://github.com/NEGO2522/Poornima-mess', demo: 'https://poornima-mess.vercel.app/', year: '2024' },
-  { title: 'Diwali Sales Analysis', description: 'Comprehensive data analysis of Diwali sales patterns using Python, revealing key consumer insights and trends.', tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'], github: 'https://github.com/NEGO2522/Diwali-Sales-Project', year: '2024' },
-  { title: 'SIH 25', description: 'Smart India Hackathon 2025 project — innovative solutions for real-world problems using cutting-edge technology.', tech: ['React', 'Node.js', 'MongoDB', 'AI/ML'], github: 'https://github.com/NEGO2522/SIH-25', demo: 'https://sih-25-poornima.vercel.app', year: '2025' },
-  { title: 'NEGO Services', description: 'A comprehensive service platform offering digital solutions and professional services worldwide.', tech: ['Next.js', 'Tailwind CSS', 'Firebase', 'Stripe'], github: 'https://github.com/NEGO2522/nego-services', demo: 'https://nego-services.vercel.app', year: '2025' },
-  { title: 'STED Education', description: 'An educational platform enhancing student learning with interactive content, progress tracking, and a modern interface.', tech: ['MERN Stack', 'JWT Auth', 'Redux', 'Material-UI'], github: 'https://github.com/NEGO2522/STED', demo: 'https://sted-founder.vercel.app', year: '2025' },
+  { title: 'LathiShop', description: 'Full e-commerce site with product listings, cart, responsive design. (Client Project)', tech: ['React', 'Firebase', 'Node.js', 'Express'], demo: 'https://lathishop.com', year: '2026' },
+  { title: 'Campus League', description: 'India\'s first college sports platform to discover events, build teams, and compete across campuses with real-time scoring.', tech: ['React', 'Node.js', 'PostgreSQL', 'Socket.io'], github: 'https://github.com/NEGO2522/Campus-Sports', demo: 'https://campusleauge.in', year: '2026' },
+  { title: 'College Mess App', description: 'Web app for Poornima University to display daily mess menu. Officially adopted by institution, received appreciation letter.', tech: ['React', 'Tailwind CSS', 'Web Tech'], github: 'https://github.com/NEGO2522/Poornima-mess', demo: 'https://poornima-mess.vercel.app/', year: '2026' },
+  { title: 'Autoslay', description: 'A seamless Chrome extension that autofills any web form with a single click.', tech: ['JavaScript', 'Chrome Extension API', 'HTML/CSS'], github: 'https://github.com/Harsh99830/Autoslay', demo: 'https://autoslay.online', year: '2025' },
+  { title: 'Ask ChatGPT Online', description: 'Chrome extension to ask ChatGPT about any text on any webpage with a single right-click. No copy-pasting, no tab switching.', tech: ['JavaScript', 'Chrome Extension API', 'AI'], github: 'https://github.com/NEGO2522/ask-chatgpt-extension', demo: 'https://ask-chatgpt.online', year: '2025' },
+  { title: 'VoteFor Decision', description: 'A real-time polling web app for live events, allowing performers to engage audiences and make instant crowd-driven decisions.', tech: ['React', 'Node.js', 'Socket.io', 'MongoDB'], github: 'https://github.com/NEGO2522/Votefore-decision', demo: 'https://votefore-decision.vercel.app', year: '2026' },
 ];
 
 const containerVariants = {
@@ -640,63 +656,107 @@ export function Projects() {
               onHoverEnd={() => setHovered(null)}
             >
               <div
-                className="flex items-start gap-3 sm:gap-5 py-6 sm:py-7 cursor-pointer"
+                className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 py-6 sm:py-7 cursor-pointer w-full"
                 onClick={() => window.open(project.demo || project.github, '_blank')}
               >
-                <span className="text-xs sm:text-sm text-gray-300 font-mono w-6 sm:w-8 pt-1 flex-shrink-0 group-hover:text-gray-500 transition-colors">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-2 sm:gap-4 flex-wrap">
-                    <h3 className="text-xl sm:text-2xl md:text-4xl font-black text-black transition-all duration-300 group-hover:translate-x-1" style={{ letterSpacing: '-0.02em' }}>
+                <div className="flex items-start gap-3 w-full sm:w-auto">
+                  <span className="text-xs sm:text-sm text-gray-300 font-mono w-6 sm:w-8 pt-1 flex-shrink-0 group-hover:text-gray-500 transition-colors">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  {/* Mobile Title */}
+                  <div className="flex-1 sm:hidden flex items-baseline justify-between gap-2">
+                    <h3 className="text-xl font-black text-black" style={{ letterSpacing: '-0.02em' }}>
+                      {project.title}
+                    </h3>
+                    <span className="text-[10px] font-mono text-gray-400 tracking-widest">{project.year}</span>
+                  </div>
+                </div>
+                
+                <div className="flex-1 min-w-0 w-full pl-9 sm:pl-0">
+                  {/* Desktop Title */}
+                  <div className="hidden sm:flex items-baseline justify-between gap-4">
+                    <h3 className="text-2xl md:text-4xl font-black text-black transition-all duration-300 group-hover:translate-x-1" style={{ letterSpacing: '-0.02em' }}>
                       {project.title}
                     </h3>
                     <span className="text-xs font-mono text-gray-400 tracking-widest flex-shrink-0">{project.year}</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-400 mt-1.5 max-w-xl line-clamp-2 leading-relaxed">{project.description}</p>
-                  <div className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 flex-wrap">
-                    {project.tech.map((t, ti) => (
-                      <span key={ti} className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500 text-[10px] sm:text-[11px] font-semibold tracking-wide">{t}</span>
-                    ))}
+                  
+                  <p className="text-sm text-gray-500 mt-1 sm:mt-1.5 max-w-xl leading-relaxed">{project.description}</p>
+                  
+                  <div className="flex flex-wrap items-center justify-between gap-4 mt-3 sm:mt-3">
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                      {project.tech.map((t, ti) => (
+                        <span key={ti} className="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 text-[10px] sm:text-[11px] font-semibold tracking-wide">{t}</span>
+                      ))}
+                    </div>
+                    
+                    {/* Action buttons */}
+                    <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                        className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
+                        whileHover={{ scale: 1.1 }}
+                        title="GitHub"
+                      >
+                        <FiGithub className="w-4 h-4" />
+                      </motion.a>
+                      {project.demo && (
+                        <motion.a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
+                          whileHover={{ scale: 1.1 }}
+                          title="Live Demo"
+                        >
+                          <FiExternalLink className="w-4 h-4" />
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
-                </div>
-                {/* Action buttons — stacked on very small screens */}
-                <div className="flex items-center gap-1.5 sm:gap-3 pt-1 flex-shrink-0">
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
-                    whileHover={{ scale: 1.1 }}
-                    title="GitHub"
-                  >
-                    <FiGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </motion.a>
-                  {project.demo && (
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={e => e.stopPropagation()}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
-                      whileHover={{ scale: 1.1 }}
-                      title="Live Demo"
-                    >
-                      <FiExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    </motion.a>
-                  )}
-                  <motion.div
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex"
-                    animate={hovered === index ? { x: 0 } : { x: -4 }}
-                  >
-                    <FiArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* ── View More Projects ── */}
+        <motion.div
+          className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.a
+            href="https://github.com/NEGO2522"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 bg-gray-50 border border-gray-200 text-black font-bold text-sm sm:text-base rounded-full hover:bg-black hover:text-white hover:border-black transition-all shadow-sm"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <FiGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+            View my GitHub
+          </motion.a>
+          
+          <motion.a
+            href="https://github.com/the-solvers"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 bg-gray-50 border border-gray-200 text-black font-bold text-sm sm:text-base rounded-full hover:bg-black hover:text-white hover:border-black transition-all shadow-sm"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <FiUsers className="w-4 h-4 sm:w-5 sm:h-5" />
+            Our Organization
+          </motion.a>
+        </motion.div>
+
       </div>
     </section>
   );

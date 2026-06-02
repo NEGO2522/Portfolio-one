@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiChevronDown, FiMail, FiArrowUpRight } from 'react-icons/fi';
 import { useState } from 'react';
-import NavbarImage from '../assets/Navbar_Image.png';
 
 export default function Navbar() {
   const location = useLocation();
@@ -15,11 +14,19 @@ export default function Navbar() {
       navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }, 100);
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 50);
     }
     setMobileMenuOpen(false);
     setDropdownOpen(false);
@@ -41,8 +48,9 @@ export default function Navbar() {
 
   const socials = [
     { label: 'GitHub',   href: 'https://github.com/NEGO2522' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kshitij-kj-jain-422025342/' },
-    { label: 'Twitter',  href: 'https://twitter.com' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kshitijjain-dev/' },
+    { label: 'Twitter',  href: 'https://x.com/k_shit_jain' },
+    { label: 'Website',  href: 'https://thesolvers.online' },
   ];
 
   return (
@@ -157,29 +165,30 @@ export default function Navbar() {
 
                   {/* Right — image + contact (2 cols) */}
                   <div className="hidden md:flex md:col-span-2 flex-col gap-6">
-                    {/* Image card */}
-                    <div className="relative overflow-hidden rounded-2xl shadow-md flex-1">
-                      <img
-                        src={NavbarImage}
-                        alt="Kshitij"
-                        className="w-full h-full object-cover object-top"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    </div>
 
                     {/* Email card */}
                     <div className="bg-white rounded-2xl px-5 py-4 shadow-sm border border-gray-100 flex items-center justify-between group hover:shadow-md transition-shadow">
                       <div>
                         <p className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-semibold mb-1">Say hello</p>
                         <a
-                          href="mailto:nextgenova28@gmail.com"
+                          href="mailto:borbreak@gmail.com"
                           className="text-sm font-bold text-gray-700 hover:text-black transition-colors"
                         >
-                          nextgenova28@gmail.com
+                          borbreak@gmail.com
                         </a>
                       </div>
                       <div className="bg-gray-100 group-hover:bg-black group-hover:text-white text-gray-400 rounded-full p-2 transition-colors duration-300">
                         <FiArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    {/* Business Info Card */}
+                    <div className="bg-white/60 rounded-2xl px-5 py-4 shadow-sm border border-gray-100 flex flex-col gap-1.5 hover:shadow-md transition-shadow">
+                      <p className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-semibold mb-1">Business Info</p>
+                      <div className="text-[10px] text-gray-500 font-medium space-y-1">
+                        <p className="font-bold text-gray-700">Kshitij Software Forge Technologies</p>
+                        <p>GSTIN: <span className="font-mono text-gray-600">08DBFPJ8049K1Z6</span></p>
+                        <p>Jaipur, Rajasthan</p>
                       </div>
                     </div>
                   </div>
@@ -222,25 +231,34 @@ export default function Navbar() {
                 <div className="px-6 py-8 flex flex-col gap-1">
                   {dropdownNav.map((item, i) => (
                     <div key={i}>
-                      <motion.button
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.05 }}
+                      <button
                         onClick={() => scrollToSection(item.id)}
                         className="group flex items-center gap-3 w-full py-2 px-2 rounded-xl hover:bg-black/5 transition-colors cursor-pointer"
                       >
-                        <span className="text-gray-300 text-[10px] font-mono font-bold">{item.n}</span>
+                        <span className="text-gray-400 text-[10px] font-mono font-bold">{item.n}</span>
                         <span className="text-xl font-black text-gray-800 group-hover:text-black transition-colors">{item.label}</span>
-                        <FiArrowUpRight className="ml-auto text-gray-300 group-hover:text-gray-500 w-4 h-4 transition-colors" />
-                      </motion.button>
+                        <FiArrowUpRight className="ml-auto text-gray-400 group-hover:text-gray-700 w-4 h-4 transition-colors" />
+                      </button>
                       {i < dropdownNav.length - 1 && <div className="border-b border-gray-200 mx-2 my-1" />}
                     </div>
                   ))}
-                  <div className="mt-6 pt-4 border-t border-gray-200">
-                    <a href="mailto:nextgenova28@gmail.com" className="text-sm font-semibold text-gray-500 hover:text-black transition-colors flex items-center gap-2">
-                      <FiMail className="w-4 h-4" />
-                      nextgenova28@gmail.com
+                  <div className="mt-6 pt-5 border-t border-gray-200 flex flex-col gap-3">
+                    <a href="mailto:borbreak@gmail.com" className="bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100 text-sm font-bold text-gray-700 hover:text-black transition-colors flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <FiMail className="w-4 h-4 text-gray-400" />
+                        <span>borbreak@gmail.com</span>
+                      </div>
+                      <FiArrowUpRight className="w-4 h-4 text-gray-400" />
                     </a>
+
+                    <div className="bg-white/60 rounded-xl px-4 py-3 shadow-sm border border-gray-100 flex flex-col gap-1">
+                      <p className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold mb-0.5">Business Info</p>
+                      <div className="text-[10px] text-gray-500 font-medium space-y-1">
+                        <p className="font-bold text-gray-700">Kshitij Software Forge Technologies</p>
+                        <p>GSTIN: <span className="font-mono text-gray-600">08DBFPJ8049K1Z6</span></p>
+                        <p>Jaipur, Rajasthan</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

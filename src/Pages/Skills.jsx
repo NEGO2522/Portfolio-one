@@ -1,34 +1,35 @@
 import { motion } from 'framer-motion';
 import { 
   FaPython, FaJs, FaReact, FaHtml5, FaCss3Alt, FaDatabase, 
-  FaNodeJs, FaGithub, FaGitAlt, FaDocker, FaAws
+  FaNodeJs, FaGithub, FaGitAlt, FaDocker, FaAws, FaChartBar, FaChartLine
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiMysql,
-  SiTypescript, SiNextdotjs, SiFramer, SiFirebase, SiVercel
+  SiTypescript, SiNextdotjs, SiFramer, SiFirebase, SiVercel,
+  SiNumpy, SiPandas, SiOpencv, SiKubernetes, SiGo
 } from 'react-icons/si';
 
 const skills = [
   { name: 'React', icon: FaReact },
-  { name: 'Next.js', icon: SiNextdotjs },
   { name: 'JavaScript', icon: FaJs },
-  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'HTML/CSS', icon: FaHtml5 },
+  { name: 'Tailwind CSS', icon: SiTailwindcss },
   { name: 'Node.js', icon: FaNodeJs },
   { name: 'Express', icon: SiExpress },
-  { name: 'Python', icon: FaPython },
   { name: 'MongoDB', icon: SiMongodb },
-  { name: 'PostgreSQL', icon: SiPostgresql },
-  { name: 'MySQL', icon: SiMysql },
-  { name: 'Tailwind', icon: SiTailwindcss },
-  { name: 'HTML5', icon: FaHtml5 },
-  { name: 'CSS3', icon: FaCss3Alt },
+  { name: 'SQL', icon: FaDatabase },
+  { name: 'Firebase', icon: SiFirebase },
+  { name: 'Python', icon: FaPython },
+  { name: 'NumPy', icon: SiNumpy },
+  { name: 'Pandas', icon: SiPandas },
+  { name: 'Matplotlib', icon: FaChartBar },
+  { name: 'Seaborn', icon: FaChartLine },
+  { name: 'OpenCV', icon: SiOpencv },
+  { name: 'Docker', icon: FaDocker },
+  { name: 'Kubernetes', icon: SiKubernetes },
   { name: 'Git', icon: FaGitAlt },
   { name: 'GitHub', icon: FaGithub },
-  { name: 'Docker', icon: FaDocker },
-  { name: 'AWS', icon: FaAws },
-  { name: 'Firebase', icon: SiFirebase },
-  { name: 'Vercel', icon: SiVercel },
-  { name: 'Framer', icon: SiFramer },
+  { name: 'Golang', icon: SiGo },
 ];
 
 export function Skills() {
@@ -70,7 +71,7 @@ export function Skills() {
 
         {/* Caption below marquee */}
         <p className="text-center text-sm sm:text-base md:text-lg font-black text-black mt-3 px-4">
-          100+ Hours of Hands-on Experience
+          1000+ Hours of Hands-on Experience
         </p>
       </div>
     </section>

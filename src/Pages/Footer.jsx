@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
+import { FiArrowUpRight, FiGithub, FiLinkedin, FiTwitter, FiMail, FiPhone, FiGlobe, FiUsers } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
 
 const navLinks = [
@@ -13,10 +13,12 @@ const navLinks = [
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/NEGO2522', icon: FiGithub },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kshitij-kj-jain-422025342/', icon: FiLinkedin },
-  { label: 'Discord', href: 'https://discord.com', icon: FaDiscord },
-  { label: 'Twitter (X)', href: 'https://twitter.com', icon: FiTwitter },
-  { label: 'Email', href: 'mailto:nextgenova28@gmail.com', icon: FiMail },
+  { label: 'Organization', href: 'https://github.com/the-solvers', icon: FiUsers },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kshitijjain-dev/', icon: FiLinkedin },
+  { label: 'Phone', href: 'tel:+919413973399', icon: FiPhone },
+  { label: 'Twitter (X)', href: 'https://x.com/k_shit_jain', icon: FiTwitter },
+  { label: 'Email', href: 'mailto:borbreak@gmail.com', icon: FiMail },
+  { label: 'Website', href: 'https://thesolvers.online', icon: FiGlobe },
 ];
 
 const otherLinks = [
@@ -27,7 +29,8 @@ const otherLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white w-full flex flex-col overflow-hidden">
+    <div className="px-2 sm:px-4 pb-2 sm:pb-4 w-full bg-white">
+      <footer id="contact" className="bg-[#0a0a0a] text-white w-full flex flex-col overflow-hidden rounded-[2rem] sm:rounded-[3rem]">
 
       {/* ── Top CTA Band ─────────────────────────────────────────────────── */}
       <div className="w-full px-5 sm:px-8 md:px-14 pt-14 sm:pt-20 pb-12 sm:pb-16 border-b border-white/6">
@@ -50,12 +53,12 @@ const Footer = () => {
               Full-time role, freelance project, or just bouncing ideas — I'd love to connect.
             </p>
             <motion.a
-              href="mailto:nextgenova28@gmail.com"
+              href="mailto:borbreak@gmail.com"
               className="group inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-bold text-sm rounded-full hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.1)] active:scale-95"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
-              <span className="truncate max-w-[200px] sm:max-w-none">nextgenova28@gmail.com</span>
+              <span className="truncate max-w-[200px] sm:max-w-none">borbreak@gmail.com</span>
               <FiArrowUpRight className="w-4 h-4 flex-shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </motion.a>
           </div>
@@ -104,21 +107,16 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Other */}
+          {/* Business Info */}
           <div className="lg:col-span-3">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-white/30 font-semibold mb-5 sm:mb-6">Other</p>
-            <ul className="space-y-2.5 sm:space-y-3">
-              {otherLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm font-medium text-white/60 hover:text-white transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-[10px] uppercase tracking-[0.28em] text-white/30 font-semibold mb-5 sm:mb-6">Business / Legal</p>
+            <div className="text-[11px] sm:text-xs text-white/50 leading-relaxed space-y-1.5">
+              <p className="font-semibold text-white/70">Kshitij Software Forge Technologies</p>
+              <p>GSTIN: <span className="font-mono text-white/70">08DBFPJ8049K1Z6</span></p>
+              <p>Type: <span className="text-white/70">Regular GST Registered</span></p>
+              <p>Valid From: <span className="text-white/70">01/06/2026</span></p>
+              <p>Location: <span className="text-white/70">Jaipur, Rajasthan</span></p>
+            </div>
           </div>
 
           {/* Status card — full width on mobile */}
@@ -131,7 +129,7 @@ const Footer = () => {
               </div>
               <p className="text-[11px] text-white/35 leading-relaxed">
                 Based in Rajasthan, India<br />
-                Fullstack &amp; AI Developer
+                Full Stack Developer &amp; ML Enthusiast
               </p>
               <p className="text-[11px] text-white/25 font-mono">Reply · 1–2 hrs</p>
             </div>
@@ -161,7 +159,8 @@ const Footer = () => {
         </h1>
       </div>
 
-    </footer>
+      </footer>
+    </div>
   );
 };
 

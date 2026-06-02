@@ -1,43 +1,52 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowUpRight, FiMonitor, FiTrendingUp, FiLayout, FiZap } from "react-icons/fi";
+import { FiArrowUpRight, FiMonitor, FiSmartphone, FiCloud, FiCpu, FiSettings } from "react-icons/fi";
 
 const services = [
   {
     id: "01",
-    title: "Brand Development & Identity",
-    tag: "Branding",
-    icon: FiLayout,
+    title: "Web Development",
+    tag: "Web",
+    icon: FiMonitor,
     description:
-      "Creating compelling brand identities and visual systems that resonate with your target audience and set you apart from competition. From logo to full design system.",
-    highlights: ["Logo & Visual Identity", "Design Systems", "Brand Guidelines", "Color & Typography"],
+      "High-performing, responsive websites and web applications focused on turning visitors into customers through optimized user flows, fast load times, and clean aesthetics.",
+    highlights: ["Landing Pages", "E-commerce", "Web Applications", "SEO Optimized"],
   },
   {
     id: "02",
-    title: "Digital Strategy & Consulting",
-    tag: "Strategy",
-    icon: FiTrendingUp,
+    title: "App Development",
+    tag: "Mobile",
+    icon: FiSmartphone,
     description:
-      "Strategic planning and consulting to help businesses leverage technology effectively and achieve their digital transformation goals with measurable results.",
-    highlights: ["Tech Audits", "Roadmapping", "Growth Strategy", "Performance Reviews"],
+      "Cross-platform mobile applications that deliver native-like experiences. Built for performance and designed to keep your users engaged on both iOS and Android.",
+    highlights: ["React Native", "Expo", "Custom UI/UX", "API Integration"],
   },
   {
     id: "03",
-    title: "Custom Online Business Platforms",
-    tag: "Development",
-    icon: FiZap,
+    title: "Cloud Solutions",
+    tag: "Cloud",
+    icon: FiCloud,
     description:
-      "Tailored web applications that help your business run smoothly — customer portals, booking systems, internal tools that automate workflows and boost productivity.",
-    highlights: ["Web Apps", "Admin Dashboards", "Automation Tools", "API Integrations"],
+      "Scalable, secure, and robust cloud infrastructure setup and management. Modern deployment, hosting, and database solutions tailored to your business needs.",
+    highlights: ["AWS & GCP", "Serverless", "Database Management", "CI/CD Pipelines"],
   },
   {
     id: "04",
-    title: "High-Converting Business Websites",
-    tag: "Web Design",
-    icon: FiMonitor,
+    title: "Automation Workflows",
+    tag: "Automation",
+    icon: FiCpu,
     description:
-      "Strategic design meets high performance. Websites focused on turning visitors into customers through optimized user flows, fast load times, and clean aesthetics.",
-    highlights: ["Landing Pages", "Portfolio Sites", "SEO Optimization", "Mobile-First"],
+      "Streamline your business processes with custom automation scripts and browser extensions. Save time and reduce human error by automating repetitive tasks.",
+    highlights: ["Chrome Extensions", "Custom Scripts", "API Integrations", "Data Scraping"],
+  },
+  {
+    id: "05",
+    title: "Custom Software Solutions",
+    tag: "Custom Software",
+    icon: FiSettings,
+    description:
+      "Bespoke software tailored precisely to what your company needs. From internal employee portals and admin dashboards to full-scale SaaS platforms—you name it, I build it.",
+    highlights: ["Employee Portals", "Admin Dashboards", "Booking Systems", "Internal Tools"],
   },
 ];
 
@@ -74,7 +83,9 @@ export function Services() {
           </div>
 
           <motion.a
-            href="#contact"
+            href="https://www.linkedin.com/in/kshitijjain-dev/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group self-start sm:self-auto inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-white/70 hover:text-white hover:border-white text-sm font-semibold rounded-full transition-all"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
@@ -93,7 +104,7 @@ export function Services() {
             return (
               <motion.div key={index} layout>
                 <button
-                  onClick={() => setExpandedIndex(isOpen ? -1 : index)}
+                  onClick={() => setExpandedIndex(index)}
                   className="w-full py-6 sm:py-7 md:py-9 flex items-start justify-between gap-4 sm:gap-6 text-left group"
                 >
                   {/* Left block */}
@@ -176,20 +187,32 @@ export function Services() {
         </div>
 
         {/* ── Footer CTA inside card ────────────────────────────────────── */}
-        <div className="relative z-10 px-5 sm:px-8 md:px-14 py-10 sm:py-12 border-t border-white/6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
-          <div>
-            <p className="text-sm text-white/30 mb-1 font-medium">Ready to start?</p>
-            <p className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight">Let's build something great.</p>
+        <div className="relative z-10 px-5 sm:px-8 md:px-14 py-8 sm:py-10 border-t border-white/6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 sm:gap-6">
+          
+          <div className="text-[11px] sm:text-xs text-white/40 leading-relaxed space-y-1">
+            <p className="font-bold text-white/60 mb-2 uppercase tracking-[0.2em] text-[10px]">Business & Legal</p>
+            <p className="font-semibold text-white/80 text-sm mb-1">Kshitij Software Forge Technologies</p>
+            <p>GSTIN: <span className="font-mono text-white/60">08DBFPJ8049K1Z6</span> <span className="mx-1">•</span> Regular GST Registered</p>
+            <p>Jaipur, Rajasthan <span className="mx-1">•</span> Valid From: 01/06/2026</p>
           </div>
-          <motion.a
-            href="mailto:draft.kshitij@gmail.com"
-            className="group inline-flex items-center gap-2.5 bg-white text-black px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Get in touch
-            <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </motion.a>
+
+          <div className="flex flex-col lg:items-end gap-3 sm:gap-4">
+            <div>
+              <p className="text-sm text-white/30 mb-1 font-medium lg:text-right">Ready to start?</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight">Let's build something great.</p>
+            </div>
+            <motion.a
+              href="https://www.linkedin.com/in/kshitijjain-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 bg-white text-black px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Get in touch
+              <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </motion.a>
+          </div>
         </div>
       </div>
     </section>

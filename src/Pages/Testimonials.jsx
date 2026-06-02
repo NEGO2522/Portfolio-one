@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowUpRight, FiAward, FiZap, FiTrendingUp, FiStar } from 'react-icons/fi';
+import { FiArrowUpRight, FiAward, FiZap, FiTrendingUp, FiStar, FiGithub } from 'react-icons/fi';
 
 const achievements = [
   {
     id: '01',
-    icon: FiAward,
-    tag: 'Recognition',
-    title: 'University Recognition',
-    subtitle: 'Appreciation Letter · Poornima University',
-    description:
-      'Received an official appreciation letter for building and deploying a live Mess Menu website actively used by students on campus.',
-    date: '2024',
-    link: { text: 'View Live Project', url: 'https://poornima-mess.vercel.app' },
+    icon: FiZap,
+    tag: 'Experience',
+    title: 'Founder & Developer',
+    subtitle: 'Campus League',
+    description: 'Built a web-based platform helping college students connect and organize sports activities on campus. Handled end-to-end product design, development, and deployment.',
+    date: '2026',
+    link: { text: 'View Live Project', url: 'https://campusleauge.in' },
   },
   {
     id: '02',
-    icon: FiZap,
-    tag: 'Launch',
-    title: 'Live Product Launch',
-    subtitle: 'Production-Ready Web App',
-    description:
-      'Designed and deployed a full-stack web application serving real users with high reliability and a polished experience.',
-    date: 'July 2025',
-    link: { text: 'Visit Lathishop', url: 'https://lathishop.com' },
+    icon: FiGithub,
+    tag: 'Open Source',
+    title: 'Core Contributor',
+    subtitle: 'Infisical MCP Server',
+    description: 'Fixed invalid JSON Schema and resolved complex Node.js 22 dependency crashes. Upgraded SDK across 4 dependency layers. (PR #18)',
+    date: '2026',
+    link: { text: 'View Repo', url: 'https://github.com/Infisical/infisical-mcp-server' },
   },
   {
     id: '03',
@@ -31,19 +29,18 @@ const achievements = [
     tag: 'Award',
     title: 'Pitching Event Winner',
     subtitle: 'Shark Tank · 3rd Runner Up',
-    description:
-      'Secured 3rd Runner Up at a competitive pitching event for presenting STED — an EdTech solution for practical skill-based learning.',
-    date: 'November 2025',
+    description: 'Secured 3rd Runner Up at a competitive pitching event for presenting STED — an EdTech solution for practical skill-based learning.',
+    date: 'November 2026',
   },
   {
     id: '04',
-    icon: FiStar,
-    tag: 'Ongoing',
-    title: 'Tech Journey',
-    subtitle: 'Self-driven Builder',
-    description:
-      'Continuously expanding expertise through hands-on projects in web development, data science, and AI to solve real-world challenges.',
-    date: 'Ongoing',
+    icon: FiAward,
+    tag: 'Recognition',
+    title: 'University Recognition',
+    subtitle: 'Appreciation Letter · Poornima University',
+    description: 'Received an official appreciation letter for building and deploying a live Mess Menu website officially adopted by the institution.',
+    date: '2024',
+    link: { text: 'View Live Project', url: 'https://poornima-mess.vercel.app' },
   },
 ];
 
@@ -180,10 +177,10 @@ const Testimonials = () => {
         >
           <div className="w-8 sm:w-10 h-px bg-gray-200 flex-shrink-0" />
           {[
-            'University Recognition', '·',
-            'Product Launch', '·',
+            'Founder @ Campus League', '·',
+            'Infisical Contributor', '·',
             'Shark Tank Runner-Up', '·',
-            'Self-taught Builder',
+            'University Recognition',
           ].map((t, i) => (
             <span
               key={i}
