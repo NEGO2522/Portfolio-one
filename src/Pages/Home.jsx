@@ -40,19 +40,19 @@ function AnimatedLogo() {
 
 
 /* ─── SocialPill ─────────────────────────────────────────────────────────── */
-function SocialPill({ href, icon: Icon, label }) {
+function SocialPill({ href, icon: Icon, label, className = "" }) {
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       title={label}
-      className="group relative flex flex-col items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl border border-gray-200 bg-white overflow-hidden py-6 sm:py-10 md:py-11"
+      className={`group relative flex flex-col items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl border border-gray-200 bg-white overflow-hidden py-6 sm:py-10 md:py-11 ${className}`}
       whileHover={{ y: -4, scale: 1.03, borderColor: '#000' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <Icon className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-gray-400 group-hover:text-black transition-colors duration-200 relative z-10" />
-      <span className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-black transition-colors duration-200 font-semibold relative z-10 hidden xs:block sm:block">
+      <span className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-black transition-colors duration-200 font-semibold relative z-10 block">
         {label}
       </span>
       <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -216,7 +216,7 @@ export default function Home() {
           <SocialPill href="https://www.linkedin.com/in/kshitijjain-dev/" icon={FiLinkedin} label="LinkedIn" />
           <SocialPill href="https://github.com/NEGO2522" icon={FiGithub} label="GitHub" />
           <SocialPill href="https://github.com/the-solvers" icon={FiUsers} label="Organization" />
-          <SocialPill href="https://x.com/k_shit_jain" icon={FiTwitter} label="Twitter" />
+          <SocialPill href="https://x.com/k_shit_jain" icon={FiTwitter} label="Twitter" className="hidden sm:flex" />
           <SocialPill href="https://thesolvers.online" icon={FiGlobe} label="Website" />
         </div>
       </div>
